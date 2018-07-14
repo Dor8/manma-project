@@ -1,0 +1,18 @@
+// this class holds the data structor of wire binary search tree
+
+public class WireBST{
+
+    int studentNum;
+    string name;
+    wireBST left;
+    wireBST right;
+    wireBST parent;
+    
+
+
+
+
+
+
+
+}
