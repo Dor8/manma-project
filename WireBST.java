@@ -6,9 +6,9 @@ public class WireBST{
 
 
 
-    wireBST (int studentNum , string name )
+    wireBST (int studentNum , String name )
     {
-        NodeWireBST head = new NodeWireBST (studentNum , name);
+        NodeWireBST head = new NodeWireBST(studentNum , name);
         _head = head ;
 
     }
