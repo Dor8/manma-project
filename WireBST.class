@@ -2,12 +2,16 @@
 
 public class WireBST{
 
-    int studentNum;
-    string name;
-    wireBST left;
-    wireBST right;
-    wireBST parent;
+    private NodeWireBST _head;
+
+
     
+    wireBST (int studentNum , string name )
+    {
+        NodeWireBST head = new NodeWireBST (studentNum , name);
+        _head = head ;
+
+    }
 
 
 
