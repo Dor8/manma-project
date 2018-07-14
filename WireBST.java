@@ -5,7 +5,7 @@ public class WireBST{
     private NodeWireBST _head;
 
 
-    
+
     wireBST (int studentNum , string name )
     {
         NodeWireBST head = new NodeWireBST (studentNum , name);
