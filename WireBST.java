@@ -16,7 +16,7 @@ public class WireBST{
 	// insert of the node BST
 	void insertBST(NodeWireBST node)
 
-
+j
 
 
 }
