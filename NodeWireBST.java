@@ -1,7 +1,8 @@
 
-// this class holds the data structor of a node in a wire binary search tree
+// this class holds the data structure of a node in a wire binary search tree
 
-import java.util.*;
+// import java.util.*;
+// import java.lang.*;
 
 
 public class NodeWireBST{
@@ -69,7 +70,7 @@ public class NodeWireBST{
 
     public String getName()
     {
-        return _studentNum;
+        return _name;
     }
 
     public void setName(String name)
