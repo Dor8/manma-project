@@ -31,7 +31,7 @@ public class NodeWireBST{
         return _left;
     }
 
-    public NodeWireBST getRight( )
+    public NodeWireBST getRight()
     {
         return _right;
     }
@@ -79,6 +79,30 @@ public class NodeWireBST{
     }
     // end of values getters and setters
 
+
+    // Function to print binary tree in 2D
+    // It does reverse inorder traversal
+    public void print2DUtil(NodeWireBST head, int space)
+    {
+        // Base case
+        if (head == null)
+            return;
+
+        // Increase distance between levels
+        space += Constants.COUNT;
+
+        // Process right child first
+        print2DUtil(head.getRight() , space);
+
+        // Print current node after space count
+        System.out.println();    // go one line down
+        for (int i = Constants.COUNT ; i < space; i++)
+            System.out.println(" ");
+        System.out.println(Integer.valueOf(head.getStudentNum()) + head.getName() + "\n" );
+
+        // Process left child
+        print2DUtil(head.getLeft(), space);
+    }
 
 
 
