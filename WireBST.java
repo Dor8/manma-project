@@ -1,97 +1,95 @@
 // this class holds the data structure of wire binary search tree
 
-import java.util.*;
-
 
 public class WireBST{
 
-    private NodeWireBST _head;
+    private WireBSTNode _head;
 
 
     WireBST(int studentNum , String name )
     {
-        NodeWireBST head = new NodeWireBST(studentNum , name);
+        WireBSTNode head = new WireBSTNode(studentNum , name);
         _head = head ;
 
     }
 
-    public NodeWireBST getHead(){
+    public WireBSTNode getHead(){
         return _head;
     }
 
 	// insert of the node WireBST
-    public void insertWireBST(NodeWireBST node){
+    public void insertWireBST(WireBSTNode node){
 
 
     }
 
     // remove of the node WireBST
-    public void removeWireBST(NodeWireBST node){
+    public void removeWireBST(WireBSTNode node){
 
 
     }
 
     // search for node WireBST
-    public void searchWireBST(NodeWireBST node){
+    public void searchWireBST(WireBSTNode node){
 
 
     }
 
     // find the Successor of the node WireBST
-    public void findSuccessor(NodeWireBST node){
+    public void findSuccessor(WireBSTNode node){
 
 
     }
 
     // find the Predecessor of the node WireBST
-    public void findPredecessor(NodeWireBST node){
+    public void findPredecessor(WireBSTNode node){
 
 
     }
 
     // find the minimum node WireBST
-    public void minWireBST(NodeWireBST node){
-
-
+    public WireBSTNode minWireBST(WireBSTNode node){
+        if(node == null)
+            return null;
+        if (node.getLeft() == null)
+            return node;
+        else
+            return minWireBST(node.getLeft());
     }
 
     // find the maximum node WireBST
-    public void maxWireBST(NodeWireBST node){
+    public void maxWireBST(WireBSTNode node){
 
 
     }
 
     // print the WireBST as pre order
-    public void preOrderScan(NodeWireBST node){
+    public void preOrderScan(WireBSTNode node){
 
 
     }
 
     // print the WireBST as in order
-    public void inOrderScan(NodeWireBST node){
+    public void inOrderScan(WireBSTNode node){
 
 
     }
 
     // print the WireBST as post order
-    public void postOrderScan(NodeWireBST node){
+    public void postOrderScan(WireBSTNode node){
 
 
     }
 
     // return the median WireBST
-    public WireBST medianWireBST(NodeWireBST node){
+    public WireBST medianWireBST(WireBSTNode node){
 
 
     }
 
     public void print2DWireBST(){
-        NodeWireBST.print2DNodeWireBST(getHead(), 0 );
+        WireBSTNode.print2DNodeWireBST(getHead(), 0 );
     }
-
-
-
-
 
 
 

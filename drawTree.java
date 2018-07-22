@@ -4,7 +4,7 @@ public class drawTree {
 
 
 
-    void drawTreeHtml(NodeWireBST head){
+    void drawTreeHtml(WireBSTNode head){
 
 
         if(head == null)
