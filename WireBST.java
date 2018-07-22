@@ -85,6 +85,10 @@ public class WireBST{
 
     }
 
+    public void print2DWireBST(){
+        NodeWireBST.print2DNodeWireBST(getHead(), 0 );
+    }
+
 
 
 

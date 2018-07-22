@@ -80,9 +80,11 @@ public class NodeWireBST{
     // end of values getters and setters
 
 
+
     // Function to print binary tree in 2D
     // It does reverse inorder traversal
-    public void print2DUtil(NodeWireBST head, int space)
+    // i translate it from C. cradit to: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
+    public static void print2DNodeWireBST(NodeWireBST head, int space)
     {
         // Base case
         if (head == null)
@@ -92,7 +94,7 @@ public class NodeWireBST{
         space += Constants.COUNT;
 
         // Process right child first
-        print2DUtil(head.getRight() , space);
+        print2DNodeWireBST(head.getRight() , space);
 
         // Print current node after space count
         System.out.println();    // go one line down
@@ -101,7 +103,7 @@ public class NodeWireBST{
         System.out.println(Integer.valueOf(head.getStudentNum()) + head.getName() + "\n" );
 
         // Process left child
-        print2DUtil(head.getLeft(), space);
+        print2DNodeWireBST(head.getLeft(), space);
     }
 
 
