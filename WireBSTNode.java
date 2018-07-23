@@ -5,7 +5,7 @@
 // import java.lang.*;
 
 
-public class WireBSTNode {
+public class WireBSTNode extends WireBST {
 
     private int _studentNum;
     private String _name;

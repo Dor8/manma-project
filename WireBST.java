@@ -1,17 +1,28 @@
 // this class holds the data structure of wire binary search tree
 
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+
 public class WireBST{
+
 
     private WireBSTNode _head;
 
 
-    WireBST(int studentNum , String name )
+    public Label helloWorld;  // lable for the gui
+
+    // constractor
+    public WireBST(int studentNum , String name )
     {
         WireBSTNode head = new WireBSTNode(studentNum , name);
         _head = head ;
 
     }
+
+    public WireBST() {
+    }
+
 
     public WireBSTNode getHead(){
         return _head;
@@ -82,9 +93,9 @@ public class WireBST{
     }
 
     // return the median WireBST
-    public WireBST medianWireBST(WireBSTNode node){
+    public WireBSTNode medianWireBST(WireBSTNode node){
 
-
+        return node;
     }
 
     public void print2DWireBST(){
@@ -92,5 +103,7 @@ public class WireBST{
     }
 
 
-
+    public void sayHello(ActionEvent actionEvent) {
+        helloWorld.setText("Hello World!");
+    }
 }
