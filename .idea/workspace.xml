@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa804cc7-cdf6-48fc-b3ad-f1c9fbd62ced" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/WireBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/WireBST.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WireBSTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/WireBSTNode.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -15,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WireBST.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WireBST.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WireBST.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -31,13 +30,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WireBSTNode.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WireBSTNode.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WireBSTNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="694">
-              <caret line="101" column="7" lean-forward="true" selection-start-line="101" selection-start-column="7" selection-end-line="101" selection-end-column="7" />
+            <state relative-caret-position="194">
+              <caret line="100" column="88" selection-start-line="100" selection-start-column="83" selection-end-line="100" selection-end-column="88" />
               <folding>
                 <element signature="e#0#2457#0" expanded="true" />
+                <element signature="e#692#693#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+                <element signature="e#790#791#0" expanded="true" />
+                <element signature="e#833#834#0" expanded="true" />
+                <element signature="e#863#864#0" expanded="true" />
+                <element signature="e#914#915#0" expanded="true" />
+                <element signature="e#942#943#0" expanded="true" />
+                <element signature="e#994#995#0" expanded="true" />
+                <element signature="e#1024#1025#0" expanded="true" />
+                <element signature="e#1078#1079#0" expanded="true" />
+                <element signature="e#1110#1111#0" expanded="true" />
+                <element signature="e#1280#1281#0" expanded="true" />
+                <element signature="e#1314#1315#0" expanded="true" />
+                <element signature="e#1367#1368#0" expanded="true" />
+                <element signature="e#1407#1408#0" expanded="true" />
+                <element signature="e#1449#1450#0" expanded="true" />
+                <element signature="e#1484#1485#0" expanded="true" />
+                <element signature="e#1542#1543#0" expanded="true" />
+                <element signature="e#1585#1586#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,8 +89,8 @@
       <find>right</find>
       <find>is</find>
       <find>rea</find>
-      <find>name</find>
       <find>set</find>
+      <find>name</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -87,8 +106,8 @@
         <option value="$PROJECT_DIR$/drawTree.java" />
         <option value="$PROJECT_DIR$/WireBSTGUI.fxml" />
         <option value="$PROJECT_DIR$/WireBST.fxml" />
-        <option value="$PROJECT_DIR$/WireBSTNode.java" />
         <option value="$PROJECT_DIR$/WireBST.java" />
+        <option value="$PROJECT_DIR$/WireBSTNode.java" />
       </list>
     </option>
   </component>
@@ -213,7 +232,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22955000" />
+    <option name="totallyTimeSpent" value="23074000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -488,10 +507,30 @@
     <entry file="file://$PROJECT_DIR$/WireBST.fxml" />
     <entry file="file://$PROJECT_DIR$/WireBSTNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="101" column="7" lean-forward="true" selection-start-line="101" selection-start-column="7" selection-end-line="101" selection-end-column="7" />
+        <state relative-caret-position="194">
+          <caret line="100" column="88" selection-start-line="100" selection-start-column="83" selection-end-line="100" selection-end-column="88" />
           <folding>
             <element signature="e#0#2457#0" expanded="true" />
+            <element signature="e#692#693#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="e#994#995#0" expanded="true" />
+            <element signature="e#1024#1025#0" expanded="true" />
+            <element signature="e#1078#1079#0" expanded="true" />
+            <element signature="e#1110#1111#0" expanded="true" />
+            <element signature="e#1280#1281#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#1407#1408#0" expanded="true" />
+            <element signature="e#1449#1450#0" expanded="true" />
+            <element signature="e#1484#1485#0" expanded="true" />
+            <element signature="e#1542#1543#0" expanded="true" />
+            <element signature="e#1585#1586#0" expanded="true" />
           </folding>
         </state>
       </provider>

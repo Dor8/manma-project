@@ -8,17 +8,17 @@
 public class WireBSTNode {
 
     private int _studentNum;
-    private String _studentname;
+    private String _studentName;
     private WireBSTNode _left;
     private WireBSTNode _right;
     private WireBSTNode _parent;
 
 
     // build a node in the WBST(= wire binary search tree)
-    public WireBSTNode(int studentNum , String studentname )
+    public WireBSTNode(int studentNum , String studentName )
     {
         _studentNum = studentNum ;
-        _studentname = studentname ;
+        _studentName = studentName ;
         _left = null ;
         _right = null ;
         _parent = null ;
@@ -57,8 +57,8 @@ public class WireBSTNode {
     }
     // end of getters and setters for all the pointers of the node
 
-    // getters and setters values of the node: studentNum, name
-    public void getStudentNum()
+    // getters and setters values of the node: studentNum, studentName
+    public int getStudentNum()
     {
         return _studentNum;
     }
@@ -70,18 +70,18 @@ public class WireBSTNode {
 
     public String getStudentName()
     {
-        return _studentname;
+        return _studentName;
     }
 
-    public void setStudentName(String studentname)
+    public void setStudentName(String studentName)
     {
-        _studentname = studentname ;
+        _studentName = studentName ;
     }
     // end of values getters and setters
 
     /**
      *
-     * @return true for nodes that have right son, and false for nodes that poit on thier successor in thier right son (or null).
+     * @return true for nodes that have right son, and false for nodes that point on their successor in their right son (or null).
      */
     public boolean isRealRight ()
     {
@@ -98,7 +98,7 @@ public class WireBSTNode {
 
     /**
      *
-     * @return true for nodes that have left son, and false for nodes that poit on thier predecessor in thier left son (or null).
+     * @return true for nodes that have left son, and false for nodes that point on their predecessor in their left son (or null).
      */
     public boolean isRealLeft ()
     {
@@ -119,10 +119,7 @@ public class WireBSTNode {
      * @return true if node is equal to this node.
      */
     public boolean equal(WireBSTNode node){
-        if (this.getStudentNum() == node.getStudentNum())
-            return true;
-        else
-            return false;
+        return (this.getStudentNum() == node.getStudentNum() : true ? false);
     }
 
 
