@@ -36,14 +36,14 @@ public class WireBST{
 
 
     /**
-     * insert of the node WireBST
+     * insert of the node to the WireBST
      * @param studentNum
-     * @param studentname
+     * @param studentName
      */
-    public void insertWireBST(int studentNum , String studentname){
-        WireBSTNode newNode = new WireBSTNode(studentNum , studentname);
+    public void insertWireBSTNode(int studentNum , String studentName){
+        WireBSTNode newNode = new WireBSTNode(studentNum , studentName);
         WireBSTNode currentNode = this.getHead(); // alias, its a pointer to where i will insert the new node
-        boolean InsertedFlag = false;
+        boolean insertedFlag = false;
 
         if( currentNode == null ) // empty tree case
         {
@@ -51,7 +51,7 @@ public class WireBST{
             return;
         }
 
-        while ( InsertedFlag )
+        while ( ! InsertedFlag )
         {
             if (currentNode.getStudentNum() >= newNode.getStudentNum())
                 if ( ! currentNode.isRealLeft())
@@ -62,7 +62,7 @@ public class WireBST{
                 else
                     currentNode = currentNode.getLeft();
             else
-                if (currentNode.isRealRight())
+                if ( ! currentNode.isRealRight())
                 {
 
                     insertToRight(currentNode , newNode);
@@ -82,7 +82,7 @@ public class WireBST{
         newNode.setParent(current);
         newNode.setLeft(current.getLeft());  // make the predeccessor of the leaf to be the predeccessor of the new node.
         current.setLeft(newNode);  // insert the new node to her place!
-        newNode.setRight(newNode); // make the successor of the new node to be her parent, because it is the successor (only in insert to right!).
+        newNode.setRight(currentNode); // make the successor of the new node to be her parent, because it is the successor (only in insert to right!).
     }
 
     /**
@@ -94,7 +94,7 @@ public class WireBST{
         newNode.setParent(current);
         newNode.setRight(current.getRight());  // make the successor of the leaf to be the successor of the new node.
         current.setRight(newNode);  // insert the new node to her place!
-        newNode.setLeft(newNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
+        newNode.setLeft(currentNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
     }
 
     // remove of the node WireBST
