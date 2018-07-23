@@ -110,12 +110,43 @@ public class WireBST{
         return node;
     }
 
-    public void print2DWireBST(){
-        WireBSTNode.print2DNodeWireBST(getHead(), 0 );
+
+    // Function to print binary tree in 2D
+    // It does reverse inorder traversal
+    // i translate it from C. cradit to: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
+    public static void print2DNodeWireBST(WireBSTNode head, int space)
+    {
+        // Base case
+        if (head == null)
+            return;
+
+        // Increase distance between levels
+        space += Constants.COUNT;
+
+        // Process right child first
+        print2DNodeWireBST(head.getRight() , space);
+
+        // Print current node after space count
+        System.out.println();    // go one line down
+        for (int i = Constants.COUNT ; i < space; i++)
+            System.out.println(" ");
+        System.out.println(Integer.valueOf(head.getStudentNum()) + head.getName() + "\n" );
+
+        // Process left child
+        print2DNodeWireBST(head.getLeft(), space);
     }
 
 
-    public void sayHello(ActionEvent actionEvent) {
-        helloWorld.setText("Hello World!");
-    }
+    /*  this is for the gui, if will be implement.
+    * public void print2DWireBST(){
+    *     WireBSTNode.print2DNodeWireBST(getHead(), 0 );
+    * }
+    *
+    * public void sayHello(ActionEvent actionEvent) {
+    *     helloWorld.setText("Hello World!");
+    * }
+    *
+    *
+    * */
+
 }
