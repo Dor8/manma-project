@@ -58,7 +58,10 @@ public class WireBST{
 
     }
 
-    // find the minimum node WireBST
+    /*
+    * find the minimum node WireBST
+    * the leftest node in the BST is the min node in it
+    * */
     public WireBSTNode minWireBST(WireBSTNode node){
         if(node == null)
             return null;
@@ -68,8 +71,17 @@ public class WireBST{
             return minWireBST(node.getLeft());
     }
 
-    // find the maximum node WireBST
+    /*
+    * find the maximum node WireBST
+    * the rightest node in the BST is the max node in it
+    * */
     public void maxWireBST(WireBSTNode node){
+        if(node == null)
+            return null;
+        if (node.getRight() == null)
+            return node;
+        else
+            return minWireBST(node.getRight());
 
 
     }
