@@ -80,7 +80,7 @@ public class WireBSTNode {
     // end of values getters and setters
 
     /**
-     *
+     * complexity: i preform constance number of actions (4), so its O(1).
      * @return true for nodes that have right son, and false for nodes that point on their successor in their right son (or null).
      */
     public boolean isRealRight ()
@@ -94,7 +94,7 @@ public class WireBSTNode {
 
 
     /**
-     *
+     * complexity: i preform constance number of actions (4), so its O(1).
      * @return true for nodes that have left son, and false for nodes that point on their predecessor in their left son (or null).
      */
     public boolean isRealLeft ()
@@ -109,6 +109,7 @@ public class WireBSTNode {
 
     /**
      * equals between two nodes means that they have the same StudentNum.
+     * complexity: i preform constance number of actions (2), so its O(1).
      * @param node check for equality
      * @return true if node is equal to this node.
      */
