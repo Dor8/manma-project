@@ -89,10 +89,7 @@ public class WireBSTNode {
             return false;
         if (this.getRight() == null)
             return false;
-        if (this.getRight().getParent().equal(this) )
-            return true;
-        else
-            return false;
+        return (this.getRight().getParent().equal(this) : true ? false );
     }
 
 
@@ -106,10 +103,7 @@ public class WireBSTNode {
             return false;
         if (this.getLeft() == null)
             return false;
-        if (this.getLeft().getParent().equal(this) )
-            return true;
-        else
-            return false;
+        return (this.getLeft().getParent().equal(this) : true ? false );
     }
 
 
