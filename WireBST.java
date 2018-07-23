@@ -34,10 +34,44 @@ public class WireBST{
 
     }
 
-    // remove of the node WireBST
-    public void removeWireBST(WireBSTNode node){
 
+    /**
+     * remove of the node WireBST
+     * @param node is the node to remove.
+     */
+    public void removeWireBSTNode(WireBSTNode node){
+        _curr = searchWireBST(wireBSTNode);                              // set pointer  to the node we wish to remove - O(log n)
+        if (_curr.getLeft() == null && _curr.getRight() == null){        // ** in case of removing a deep leaf
+            if (_curr == findPredecessor(_curr).getRight()) {            // that he is a right son
+                findPredecessor(_curr).setRight(null);                   // set the pointer to him to null, garbage collector will destory him
+            }
+            else {                                                       // that he is a left son
+                findPredecessor(_curr).setLeft(null);                    // set the pointer to him to null
+            }
+        }                                                                // end case of leafs
+        if ((_curr.getRight() != null) && (_curr.getleft() == null)){    //** in case of removing node who has only right son
+            if (findPredecessor(_curr).getRight() == _curr){             // in case the node is a right son
+                findPredecessor(_curr).setRight() == _curr.getRight();
+            }
+            if (findPredecessor(_curr).getLeft() == _curr){              // in case the node is a left son
+                findPredecessor(_curr).setLeft() == _curr.getRight();
+            }
+        }
+        if ((_curr.getRight() == null) && (_curr.getleft() != null)){    //** in case of removing node who has only left son
+            if (findPredecessor(_curr).getRight() == _curr){             // in case the node is a right son
+                findPredecessor(_curr).setRight() == _curr.getRight();
+            }
+            if (findPredecessor(_curr).getLeft() == _curr){              // in case the node is a left son
+                findPredecessor(_curr).setLeft() == _curr.getRight();
+            }
+        }
+        if ((_curr.getRight() != null) && (_curr.getleft() != null)) {    //** in case of removing node who has two sons
+            _temp = _curr.getRight();
+            while(_temp.getLeft() != null){
+                _temp = _temp.getLeft();
+            }
 
+        }
     }
 
     // search for node WireBST
