@@ -3,6 +3,7 @@
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+//import WireBSTNode; //needed?
 
 public class WireBST{
 
@@ -28,10 +29,72 @@ public class WireBST{
         return _head;
     }
 
-	// insert of the node WireBST
-    public void insertWireBST(WireBSTNode node){
+    public void setHead(WireBSTNode newHead){
+        _head = newHead ;
+    }
 
 
+
+    /**
+     * insert of the node to the WireBST
+     * @param studentNum
+     * @param studentName
+     */
+    public void insertWireBSTNode(int studentNum , String studentName){
+        WireBSTNode newNode = new WireBSTNode(studentNum , studentName);
+        WireBSTNode currentNode = this.getHead(); // alias, its a pointer to where i will insert the new node
+        boolean insertedFlag = false;
+
+        if( currentNode == null ) // empty tree case
+        {
+            this.setHead(newNode);
+            return;
+        }
+
+        while ( ! InsertedFlag )
+        {
+            if (currentNode.getStudentNum() >= newNode.getStudentNum())
+                if ( ! currentNode.isRealLeft())
+                {
+                    insertToLeft(currentNode , newNode);
+                    InsertedFlag = true;
+                }
+                else
+                    currentNode = currentNode.getLeft();
+            else
+                if ( ! currentNode.isRealRight())
+                {
+
+                    insertToRight(currentNode , newNode);
+                    InsertedFlag = true;
+                }
+                else
+                    currentNode = currentNode.getRight();
+        }
+    }
+
+    /**
+     * insert the new node to the left of the current node.
+     * @param current is the node that will get a new left son.
+     * @param newNode is the node to add.
+     */
+    private void insertToLeft(WireBSTNode current , WireBSTNode newNode ){
+        newNode.setParent(current);
+        newNode.setLeft(current.getLeft());  // make the predeccessor of the leaf to be the predeccessor of the new node.
+        current.setLeft(newNode);  // insert the new node to her place!
+        newNode.setRight(currentNode); // make the successor of the new node to be her parent, because it is the successor (only in insert to right!).
+    }
+
+    /**
+     * insert the new node to the right of the current node.
+     * @param current is the node that will get a new right son.
+     * @param newNode is the node to add.
+     */
+    private void insertToRight(WireBSTNode current , WireBSTNode newNode ){
+        newNode.setParent(current);
+        newNode.setRight(current.getRight());  // make the successor of the leaf to be the successor of the new node.
+        current.setRight(newNode);  // insert the new node to her place!
+        newNode.setLeft(currentNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
     }
 
 
