@@ -19,6 +19,8 @@ public class WireBST{
     {
         WireBSTNode head = new WireBSTNode(studentNum , name);
         _head = head ;
+        _median = null;
+        _nodeCounter = 0;
 
     }
 
@@ -169,11 +171,28 @@ public class WireBST{
     }
 
     /**
-     * 
-     * @param node
+     *
      * @return the median WireBST
      */
-    public WireBSTNode medianWireBST()
+    public WireBSTNode getMedianWireBST()
+    {
+        return _median;
+
+    }
+
+    /**
+     *
+     * @param median is the new median to be set.
+     */
+    public void setMedian(WireBSTNode median) {
+        this._median = median;
+    }
+
+    /**
+     *
+     * @return the median WireBSTNode
+     */
+    WireBSTNode getMedianWireBST()
     {
         return _median;
 
