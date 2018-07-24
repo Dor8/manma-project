@@ -9,7 +9,8 @@ public class WireBST{
 
 
     private WireBSTNode _head;
-
+    private WireBSTNode _median;
+    private int _nodeCounter;
 
     public Label helloWorld;  // lable for the gui
 
@@ -167,12 +168,16 @@ public class WireBST{
 
     }
 
-    // return the median WireBST
-    public WireBSTNode medianWireBST(WireBSTNode node){
+    /**
+     * 
+     * @param node
+     * @return the median WireBST
+     */
+    public WireBSTNode medianWireBST()
+    {
+        return _median;
 
-        return node;
     }
-
 
     // Function to print binary tree in 2D
     // It does reverse inorder traversal
