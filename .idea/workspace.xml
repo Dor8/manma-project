@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aa804cc7-cdf6-48fc-b3ad-f1c9fbd62ced" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/WireBSTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/WireBSTNode.java" afterDir="false" />
-    </list>
+    <list default="true" id="aa804cc7-cdf6-48fc-b3ad-f1c9fbd62ced" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,26 +15,18 @@
       <file leaf-file-name="WireBST.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WireBST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="85">
               <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#478#479#0" expanded="true" />
-                <element signature="e#506#507#0" expanded="true" />
-                <element signature="e#545#546#0" expanded="true" />
-                <element signature="e#573#574#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WireBSTNode.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WireBSTNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WireBSTNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="100" column="88" selection-start-line="100" selection-start-column="83" selection-end-line="100" selection-end-column="88" />
+            <state relative-caret-position="644">
+              <caret line="128" column="1" selection-start-line="128" selection-start-column="1" selection-end-line="128" selection-end-column="1" />
               <folding>
-                <element signature="e#0#2457#0" expanded="true" />
                 <element signature="e#692#693#0" expanded="true" />
                 <element signature="e#720#721#0" expanded="true" />
                 <element signature="e#761#762#0" expanded="true" />
@@ -49,15 +39,16 @@
                 <element signature="e#1024#1025#0" expanded="true" />
                 <element signature="e#1078#1079#0" expanded="true" />
                 <element signature="e#1110#1111#0" expanded="true" />
-                <element signature="e#1280#1281#0" expanded="true" />
-                <element signature="e#1314#1315#0" expanded="true" />
-                <element signature="e#1367#1368#0" expanded="true" />
-                <element signature="e#1407#1408#0" expanded="true" />
-                <element signature="e#1449#1450#0" expanded="true" />
-                <element signature="e#1484#1485#0" expanded="true" />
-                <element signature="e#1542#1543#0" expanded="true" />
-                <element signature="e#1585#1586#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -108,6 +99,7 @@
         <option value="$PROJECT_DIR$/WireBST.fxml" />
         <option value="$PROJECT_DIR$/WireBST.java" />
         <option value="$PROJECT_DIR$/WireBSTNode.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -125,13 +117,12 @@
     <option name="width" value="977" />
     <option name="height" value="1038" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -144,6 +135,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -232,7 +225,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23074000" />
+    <option name="totallyTimeSpent" value="23299000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -251,7 +244,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.29986963" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17578125" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -295,18 +288,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/NodeWireBST.java" />
     <entry file="file://$PROJECT_DIR$/WireBST.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -365,13 +350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="91" column="4" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -389,13 +367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1445">
           <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -411,13 +382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1394">
           <caret line="84" selection-start-line="84" selection-end-line="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -433,13 +397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -507,10 +464,9 @@
     <entry file="file://$PROJECT_DIR$/WireBST.fxml" />
     <entry file="file://$PROJECT_DIR$/WireBSTNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="100" column="88" selection-start-line="100" selection-start-column="83" selection-end-line="100" selection-end-column="88" />
+        <state relative-caret-position="644">
+          <caret line="128" column="1" selection-start-line="128" selection-start-column="1" selection-end-line="128" selection-end-column="1" />
           <folding>
-            <element signature="e#0#2457#0" expanded="true" />
             <element signature="e#692#693#0" expanded="true" />
             <element signature="e#720#721#0" expanded="true" />
             <element signature="e#761#762#0" expanded="true" />
@@ -523,29 +479,21 @@
             <element signature="e#1024#1025#0" expanded="true" />
             <element signature="e#1078#1079#0" expanded="true" />
             <element signature="e#1110#1111#0" expanded="true" />
-            <element signature="e#1280#1281#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1367#1368#0" expanded="true" />
-            <element signature="e#1407#1408#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
-            <element signature="e#1484#1485#0" expanded="true" />
-            <element signature="e#1542#1543#0" expanded="true" />
-            <element signature="e#1585#1586#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WireBST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="85">
           <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
