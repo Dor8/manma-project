@@ -106,29 +106,31 @@ public class WireBST{
         if ( node == null) return;
         if ( ! node.isRealLeft() && ! node.isRealRight() ){
             removeDeepLeaf(node);
-        }                                                                // end case of leafs
+        }
         if ((node.getRight() != null) && (node.getleft() == null)){    //** in case of removing node who has only right son
-            if (findPredecessor(node).getRight() == node){             // in case the node is a right son
-                findPredecessor(node).setRight() == node.getRight();
-            }
-            if (findPredecessor(node).getLeft() == node){              // in case the node is a left son
-                findPredecessor(node).setLeft() == node.getRight();
-            }
+            removeNodeWithOnlyRightSon(node);
         }
         if ((node.getRight() == null) && (node.getleft() != null)){    //** in case of removing node who has only left son
-            if (findPredecessor(node).getRight() == node){             // in case the node is a right son
-                findPredecessor(node).setRight() == node.getRight();
-            }
-            if (findPredecessor(node).getLeft() == node){              // in case the node is a left son
-                findPredecessor(node).setLeft() == node.getRight();
-            }
+            removeNodeWithOnlyLeftSon(node);
         }
         if ((node.getRight() != null) && (node.getleft() != null)) {    //** in case of removing node who has two sons
-            _temp = node.getRight();
-            while(_temp.getLeft() != null){
-                _temp = _temp.getLeft();
+            WireBSTNode temp = node.getRight();
+            while(temp.getLeft() != null){
+                temp = temp.getLeft();
             }
-
+            if (node.getParent() == null )){
+                _head = temp;
+                temp.setRight = node.getRight;
+                temp.setLeft(node.getLeft);
+            } else if (node.equal(node.getParent().getRight)){
+                temp.setRight(node.getRight);
+                temp.setLeft(node.getLeft);
+                node.getParent().setRight(temp);
+            } else {
+                temp.setRight.(node.getRight);
+                temp.setLeft.(node.getLeft);
+                node.getParent().setLeft(temp);
+            }
         }
     }
 
@@ -147,6 +149,34 @@ public class WireBST{
             node.getParent().setLeft( node.getLeft() );
         }
     }
+
+        /**
+         * removing a node (who is right son) with just one son
+         * @param node. the node we wish to remove
+         */
+        private void removeNodeWithOnlyRightSon(WireBSTNode node){
+            if (node.getParent().getRight() == node){             // in case the node is a right son
+                node.getParent().setRight() == node.getRight();
+            }
+            if (node.getParent().getLeft() == node){              // in case the node is a left son
+                node.getParent().setLeft() == node.getRight();
+            }
+        }
+
+        /**
+        * removing a node (who is left son) with just one son
+        * @param node. the node we wish to remove
+        */
+        private void removeNodeWithOnlyLeftSon(WireBSTNode node){
+            if (node.getParent().getRight() == node){             // in case the node is a right son
+                node.getParent().setRight() == node.getLeft();
+            }
+            if (node.getParent().getLeft() == node){              // in case the node is a left son
+                node.getParent().setLeft() == node.getLeft();
+            }
+        }
+
+    }                                                             // end of WireBST class
     // search for node WireBST
     public void searchWireBST( WireBSTNode node ){
 
@@ -193,21 +223,54 @@ public class WireBST{
 
     }
 
-    // print the WireBST as pre order
+    /**
+     * print the wireBST as pre oder
+     * @param node
+     */
     public void preOrderScan(WireBSTNode node){
 
+        if(node == null) return;
+
+        System.out.println(node._studentNum + " ");             //print the node first
+        System.out.println(node._studentName + " ");
+
+        preOrderScan(node.getLeft());                           //recursive call on left subtree
+
+        preOrderScan(node.getRight());                          //recursive call on right subtree
 
     }
 
-    // print the WireBST as in order
+    /**
+     * print the wireBST as in order
+     * @param node
+     */
     public void inOrderScan(WireBSTNode node){
 
+        if (node == null) return;
+
+        inOrderScan(node.getLeft());                            //first, recursive call on left child
+
+        System.out.println(node._studentNum + " ");             //print node data
+        System.out.println(node._studentName + " ");
+
+        inOrderScan(node.getRight());                           //last, recursive call on right child
 
     }
 
-    // print the WireBST as post order
+    /**
+     * print the wireBST as post order
+     * @param node
+     */
     public void postOrderScan(WireBSTNode node){
 
+        if (node == null) return;
+
+        postOrderScan(node.getLeft());                          //first, recursive call on left subtree
+
+        postOrderScan(node.getRight());                         //then recursive call on right subtree
+
+        System.out.println(node._studentNum + " ");             //last, print node data
+        System.out.println(node._studentName + " ");
 
     }
 
