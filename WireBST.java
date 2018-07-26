@@ -139,7 +139,7 @@ public class WireBST{
      * @param node. the node we wish to remove
      */
     private void removeDeepLeaf( WireBSTNode node ){
-        if ( node.getParent() = null ){
+        if ( node.getParent() == null ){
             _head = null;
         }
         if ( node.equal( node.getParent().getRight())) {
