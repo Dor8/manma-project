@@ -107,14 +107,14 @@ public class WireBST{
         if ( ! node.isRealLeft() && ! node.isRealRight() ){
             removeDeepLeaf(node);
         }
-        if ((node.getRight() != null) && (node.getleft() == null)){    //** in case of removing node who has only right son
+        if ((node.isRealRight()) && (!node.isRealLeft())){    //** in case of removing node who has only right son
             removeNodeWithOnlyRightSon(node);
         }
-        if ((node.getRight() == null) && (node.getleft() != null)){    //** in case of removing node who has only left son
+        if ((!node.isRealRight()) && (node.isRealLeft())){    //** in case of removing node who has only left son
             removeNodeWithOnlyLeftSon(node);
         }
-        if ((node.getRight() != null) && (node.getleft() != null)) {    //** in case of removing node who has two sons
-            
+        if ((node.isRealRight()) && (node..isRealLeft())) {    //** in case of removing node who has two sons
+            removeNodeWithTwoSons(node);
         }
     }
 
