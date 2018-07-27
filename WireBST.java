@@ -66,7 +66,7 @@ public class WireBST{
 
         while ( ! InsertedFlag )
         {
-            if (currentNode.getStudentNum() >= newNode.getStudentNum())
+            if (currentNode.getStudentNum() > newNode.getStudentNum())
                 if ( ! currentNode.isRealLeft())
                 {
                     insertToLeft(currentNode , newNode);
@@ -112,7 +112,7 @@ public class WireBST{
     }
 
     private void updateMedianInsert(WireBSTNode newNode){
-        if(newNode.getStudentName() > this.getMedianWireBST().getStudentNum() ){
+        if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ){
             if (this.getNodeCounter() % 2 == 0){
                 this.setMedian ( this.getMedianWireBST().getSeccesur() ) ;
             }
@@ -214,16 +214,6 @@ public class WireBST{
      */
     public void setMedian(WireBSTNode median) {
         this._median = median;
-    }
-
-    /**
-     *
-     * @return the median WireBSTNode
-     */
-    WireBSTNode getMedianWireBST()
-    {
-        return _median;
-
     }
 
     // Function to print binary tree in 2D
