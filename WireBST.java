@@ -61,7 +61,7 @@ public class WireBST{
         }
 
         if( searchWireBST(newNode.getStudentNum()) != null ){
-            System.Out.Println( insertError );
+            System.Out.Println( Constants.insertError);
             return;
         }
 
