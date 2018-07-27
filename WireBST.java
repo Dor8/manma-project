@@ -240,12 +240,11 @@ public class WireBST{
 
         if(node == null) return;
 
-        System.out.println(node._studentNum + " ");             //print the node first
-        System.out.println(node._studentName + " ");
+        printNode(node);
 
-        preOrderScan(node.getLeft());                           //recursive call on left subtree
+        preOrderScan(node.getLeft());
 
-        preOrderScan(node.getRight());                          //recursive call on right subtree
+        preOrderScan(node.getRight());
 
     }
 
@@ -253,16 +252,13 @@ public class WireBST{
      * print the wireBST as in order
      * @param node
      */
-    public void inOrderScan(WireBSTNode node){
+    public void inOrderScan(){
 
-        if (node == null) return;
+        WireBSTNode temp = minWireBST();
 
-        inOrderScan(node.getLeft());                            //first, recursive call on left child
-
-        System.out.println(node._studentNum + " ");             //print node data
-        System.out.println(node._studentName + " ");
-
-        inOrderScan(node.getRight());                           //last, recursive call on right child
+        for (; temp != null; temp = temp.getRight()){
+            printNode(temp);
+        }
 
     }
 
@@ -274,13 +270,21 @@ public class WireBST{
 
         if (node == null) return;
 
-        postOrderScan(node.getLeft());                          //first, recursive call on left subtree
+        postOrderScan(node.getLeft());
 
-        postOrderScan(node.getRight());                         //then recursive call on right subtree
+        postOrderScan(node.getRight());
 
-        System.out.println(node._studentNum + " ");             //last, print node data
-        System.out.println(node._studentName + " ");
+        printNode(node);
 
+    }
+
+    /**
+     *
+     * @param node
+     */
+    private void printNode(WireBSTNode node){
+        System.out.println(node.getStudentNum() + " ");
+        System.out.println(node.getStudentName() + " ");
     }
 
     // return the median WireBST
