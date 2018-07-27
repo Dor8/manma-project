@@ -113,7 +113,7 @@ public class WireBST{
         if ((!node.isRealRight()) && (node.isRealLeft())){    //** in case of removing node who has only left son
             removeNodeWithOnlyLeftSon(node);
         }
-        if ((node.isRealRight()) && (node..isRealLeft())) {    //** in case of removing node who has two sons
+        if ((node.isRealRight()) && (node.isRealLeft())) {    //** in case of removing node who has two sons
             removeNodeWithTwoSons(node);
         }
     }
@@ -166,10 +166,7 @@ public class WireBST{
      * @param node with two sons
      */
     private void removeNodeWithTwoSons(WireBSTNode node){
-        WireBSTNode temp = node.getRight();
-        while(temp.isRealLeft()){
-            temp = temp.getLeft();
-        }
+        WireBSTNode temp = node.getSuccessor();
         if (node.getParent() == null )){
             _head = temp;
             temp.setRight(node.getRight());
