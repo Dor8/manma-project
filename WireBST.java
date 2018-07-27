@@ -140,10 +140,10 @@ public class WireBST{
      * @param node. the node we wish to remove
      */
     private void removeNodeWithOnlyRightSon(WireBSTNode node){
-        if (node.getParent().getRight().equal(node)){             // in case the node is a right son
+        if (node.equal(node.getParent().getRight())){             // in case the node is a right son
             node.getParent().setRight(node.getRight());
         }
-        if (node.getParent().getLeft().equal(node)){              // in case the node is a left son
+        if (node.equal(node.getParent().getLeft())){              // in case the node is a left son
             node.getParent().setLeft(node.getRight());
         }
     }
@@ -153,10 +153,10 @@ public class WireBST{
     * @param node. the node we wish to remove
     */
     private void removeNodeWithOnlyLeftSon(WireBSTNode node){
-        if (node.getParent().getRight().equal(node)){             // in case the node is a right son
+        if (node.equal(node.getParent().getRight())){             // in case the node is a right son
             node.getParent().setRight(node.getLeft());
         }
-        if (node.getParent().getLeft().equal(node)){              // in case the node is a left son
+        if (node.equal(node.getParent().getLeft())){              // in case the node is a left son
             node.getParent().setLeft(node.getLeft());
         }
     }
@@ -172,15 +172,15 @@ public class WireBST{
         }
         if (node.getParent() == null )){
             _head = temp;
-            temp.setRight(node.getRight);
-            temp.setLeft(node.getLeft);
-        } else if (node.equal(node.getParent().getRight)){
-            temp.setRight(node.getRight);
-            temp.setLeft(node.getLeft);
+            temp.setRight(node.getRight());
+            temp.setLeft(node.getLeft());
+        } else if (node.equal(node.getParent().getRight())){
+            temp.setRight(node.getRight());
+            temp.setLeft(node.getLeft());
             node.getParent().setRight(temp);
         } else {
-            temp.setRight.(node.getRight);
-            temp.setLeft.(node.getLeft);
+            temp.setRight(node.getRight());
+            temp.setLeft(node.getLeft());
             node.getParent().setLeft(temp);
         }            
     }
