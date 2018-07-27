@@ -112,17 +112,12 @@ public class WireBST{
     }
 
     private void updateMedianInsert(WireBSTNode newNode){
-        if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ){
-            if (this.getNodeCounter() % 2 == 0){
+        if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() )
+            if (this.getNodeCounter() % 2 == 0)
                 this.setMedian ( this.getMedianWireBST().getSeccesur() ) ;
-            }
-            else
-            if (this.getNodeCounter() % 2 == 1){
-                this.setMedian ( this.getMedianWireBST().getPredecessor() ) ;
-            }
-            this._nodeCounter ++;
-        }
-
+        else if (this.getNodeCounter() % 2 == 1)
+            this.setMedian ( this.getMedianWireBST().getPredecessor() ) ;
+        this._nodeCounter ++;
     }
 
     /**
