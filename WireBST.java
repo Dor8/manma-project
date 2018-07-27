@@ -15,12 +15,11 @@ public class WireBST{
     public Label helloWorld;  // lable for the gui
 
     // constractor
-    public WireBST( )
+    public WireBST()
     {
         _head = null ;
         _median = null;
         _nodeCounter = 0;
-
     }
 
     public WireBST() {
