@@ -36,6 +36,10 @@ public class WireBST{
         _head = newHead ;
     }
 
+    private int getNodeCounter(){
+        return this._nodeCounter;
+
+    }
 
 
     /**
@@ -51,8 +55,16 @@ public class WireBST{
         if( currentNode == null ) // empty tree case
         {
             this.setHead(newNode);
+            this.setMedian(newnode);
+            _nodeCounter ++ ;
             return;
         }
+
+        if( searchWireBST(newNode.getStudentNum()) != null ){
+            System.Out.Println( insertError );
+            return;
+        }
+
 
         while ( ! InsertedFlag )
         {
@@ -74,6 +86,7 @@ public class WireBST{
                 else
                     currentNode = currentNode.getRight();
         }
+        updateMedianInsert(newNode);
     }
 
     /**
@@ -100,6 +113,23 @@ public class WireBST{
         newNode.setLeft(currentNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
     }
 
+    private void updateMedianInsert(WireBSTNode newNode){
+        if(newNode.getStudentName() > this.getMedianWireBST().getStudentNum() ){
+            if (this.getNodeCounter() % 2 == 0){
+                this.setMedian ( this.getMedianWireBST().getSeccesur() ) ;
+            }
+        else
+            if (this.getNodeCounter() % 2 == 1){
+                this.setMedian ( this.getMedianWireBST().getPredecessor() ) ;
+            }
+        this._nodeCounter ++;
+        }
+
+
+
+
+    }
+
     // remove of the node WireBST
     public void removeWireBST(WireBSTNode node){
 
@@ -113,13 +143,13 @@ public class WireBST{
     }
 
     // find the Successor of the node WireBST
-    public void findSuccessor(WireBSTNode node){
+    public void getSuccessor(WireBSTNode node){
 
 
     }
 
     // find the Predecessor of the node WireBST
-    public void findPredecessor(WireBSTNode node){
+    public void getPredecessor(WireBSTNode node){
 
 
     }
@@ -128,26 +158,26 @@ public class WireBST{
     * find the minimum node WireBST
     * the leftest node in the BST is the min node in it
     * */
-    public WireBSTNode minWireBST(WireBSTNode node){
-        if(node == null)
+    public WireBSTNode minWireBST(){
+        if( this == null || this.getHead() == null )
             return null;
-        if (node.getLeft() == null)
-            return node;
-        else
-            return minWireBST(node.getLeft());
+        WireBSTNode temp = this.getHead();
+        while (temp.getLeft() != null)
+            temp = temp.getLeft();
+        return temp;
     }
 
     /*
     * find the maximum node WireBST
     * the rightest node in the BST is the max node in it
     * */
-    public void maxWireBST(WireBSTNode node){
-        if(node == null)
+    public void maxWireBST(){
+        if(this == null || this.getHead() == null)
             return null;
-        if (node.getRight() == null)
-            return node;
-        else
-            return minWireBST(node.getRight());
+        WireBSTNode temp = this.getHead();
+        while (temp.getRight() != null)
+            temp = temp.getRight();
+        return temp;
 
 
     }
