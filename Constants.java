@@ -4,5 +4,6 @@ public class Constants {
 
 
     public static final int COUNT = 10;
+    public static final String insertError = "cant insert this student. number already exists";
 
 }
