@@ -114,11 +114,11 @@ public class WireBST{
     private void updateMedianInsert(WireBSTNode newNode){
         if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ){
             if (this.getNodeCounter() % 2 == 0){
-                this.setMedian ( this.getMedianWireBST().getSuccesor() ) ;
+                this.setMedian ( getSuccesor( this.getMedianWireBST() ) ) ;
             }
         else
             if (this.getNodeCounter() % 2 == 1){
-                this.setMedian ( this.getMedianWireBST().getPredecessor() ) ;
+                this.setMedian ( getPredecessor( this.getMedianWireBST() ) ) ;
             }
         this._nodeCounter ++;
         }
@@ -141,14 +141,41 @@ public class WireBST{
     }
 
     // find the Successor of the node WireBST
-    public void getSuccessor(WireBSTNode node){
+
+    /**
+     *
+     * @param node is the current node, that looking for her's successor.
+     * @return the successor of node.
+     */
+    public WireBSTNode getSuccessor(WireBSTNode node){
+        if ( node == null )
+            return null;
+        if ( ! node.isRealRight() )     // if the right son isnt real, so he is the successor!
+            return node.getRight();
+        WireBSTNode temp;
+        for(temp = node.getRight(); temp.isRealLeft() ; temp = temp.getLeft() )  // temp one step to the right, and then run all the way left, tilll he reach a non-real son.
+            ;
+        return temp ;
 
 
     }
 
     // find the Predecessor of the node WireBST
-    public void getPredecessor(WireBSTNode node){
 
+    /**
+     *
+     * @param node is the current node, that looking for her's predecessor.
+     * @return the predecessor of node.
+     */
+    public WireBSTNode getPredecessor(WireBSTNode node){
+        if ( node == null )
+            return null;
+        if ( ! node.isRealLeft() )     // if the left son isnt real, so he is the successor!
+            return node.getLeft();
+        WireBSTNode temp;
+        for(temp = node.getLeft(); temp.isRealRight() ; temp = temp.getRight() )  // temp go one step to the left, and then run all the way right, tilll he reach a non-real son.
+            ;
+        return temp ;
 
     }
 
