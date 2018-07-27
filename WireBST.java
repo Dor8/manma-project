@@ -160,12 +160,14 @@ public class WireBST{
             node.getParent().setLeft() == node.getLeft();
         }
     }
-    
-    
-    // Dor! add documentation, and change all the nulls to : "isReal...()"
+
+    /**
+     * remove node who has two sons
+     * @param node with two sons
+     */
     private void removeNodeWithTwoSons(WireBSTNode node){
         WireBSTNode temp = node.getRight();
-        while(temp.getLeft() != null){
+        while(temp.isRealLeft()){
             temp = temp.getLeft();
         }
         if (node.getParent() == null )){
