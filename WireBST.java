@@ -9,16 +9,17 @@ public class WireBST{
 
 
     private WireBSTNode _head;
-
+    private WireBSTNode _median;
+    private int _nodeCounter;
 
     public Label helloWorld;  // lable for the gui
 
     // constractor
-    public WireBST(int studentNum , String name )
+    public WireBST()
     {
-        WireBSTNode head = new WireBSTNode(studentNum , name);
-        _head = head ;
-
+        _head = null ;
+        _median = null;
+        _nodeCounter = 0;
     }
 
     public WireBST() {
@@ -33,6 +34,10 @@ public class WireBST{
         _head = newHead ;
     }
 
+    private int getNodeCounter(){
+        return this._nodeCounter;
+
+    }
 
 
     /**
@@ -48,12 +53,20 @@ public class WireBST{
         if( currentNode == null ) // empty tree case
         {
             this.setHead(newNode);
+            this.setMedian(newnode);
+            _nodeCounter ++ ;
             return;
         }
 
+        if( searchWireBST(newNode.getStudentNum()) != null ){
+            System.Out.Println( Constants.insertError);
+            return;
+        }
+
+
         while ( ! InsertedFlag )
         {
-            if (currentNode.getStudentNum() >= newNode.getStudentNum())
+            if (currentNode.getStudentNum() > newNode.getStudentNum())
                 if ( ! currentNode.isRealLeft())
                 {
                     insertToLeft(currentNode , newNode);
@@ -71,6 +84,7 @@ public class WireBST{
                 else
                     currentNode = currentNode.getRight();
         }
+        updateMedianInsert(newNode);
     }
 
     /**
@@ -97,6 +111,19 @@ public class WireBST{
         newNode.setLeft(currentNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
     }
 
+    private void updateMedianInsert(WireBSTNode newNode){
+        if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ){
+            if (this.getNodeCounter() % 2 == 0){
+                this.setMedian ( this.getMedianWireBST().getSeccesur() ) ;
+            }
+            else
+            if (this.getNodeCounter() % 2 == 1){
+                this.setMedian ( this.getMedianWireBST().getPredecessor() ) ;
+            }
+            this._nodeCounter ++;
+        }
+
+    }
 
     /**
      * remove of the node WireBST
@@ -148,6 +175,8 @@ public class WireBST{
         }
     }
 
+
+
     /**
     * removing a node (who is left son) with just one son
     * @param node. the node we wish to remove
@@ -179,10 +208,10 @@ public class WireBST{
             temp.setRight(node.getRight());
             temp.setLeft(node.getLeft());
             node.getParent().setLeft(temp);
-        }            
+        }
     }
 
-                                   
+
     // search for node WireBST
     public void searchWireBST( WireBSTNode node ){
 
@@ -190,13 +219,13 @@ public class WireBST{
     }
 
     // find the Successor of the node WireBST
-    public void findSuccessor( WireBSTNode node ){
+    public void getSuccessor(WireBSTNode node){
 
 
     }
 
     // find the Predecessor of the node WireBST
-    public void findPredecessor(WireBSTNode node){
+    public void getPredecessor(WireBSTNode node){
 
 
     }
@@ -205,26 +234,26 @@ public class WireBST{
     * find the minimum node WireBST
     * the leftest node in the BST is the min node in it
     * */
-    public WireBSTNode minWireBST(WireBSTNode node){
-        if(node == null)
+    public WireBSTNode minWireBST(){
+        if( this == null || this.getHead() == null )
             return null;
-        if (node.getLeft() == null)
-            return node;
-        else
-            return minWireBST(node.getLeft());
+        WireBSTNode temp = this.getHead();
+        while (temp.getLeft() != null)
+            temp = temp.getLeft();
+        return temp;
     }
 
     /*
     * find the maximum node WireBST
     * the rightest node in the BST is the max node in it
     * */
-    public void maxWireBST(WireBSTNode node){
-        if(node == null)
+    public void maxWireBST(){
+        if(this == null || this.getHead() == null)
             return null;
-        if (node.getRight() == null)
-            return node;
-        else
-            return minWireBST(node.getRight());
+        WireBSTNode temp = this.getHead();
+        while (temp.getRight() != null)
+            temp = temp.getRight();
+        return temp;
 
 
     }
@@ -284,12 +313,23 @@ public class WireBST{
         System.out.println(node.getStudentName() + " ");
     }
 
-    // return the median WireBST
-    public WireBSTNode medianWireBST(WireBSTNode node){
+    /**
+     *
+     * @return the median WireBST
+     */
+    public WireBSTNode getMedianWireBST()
+    {
+        return _median;
 
-        return node;
     }
 
+    /**
+     *
+     * @param median is the new median to be set.
+     */
+    public void setMedian(WireBSTNode median) {
+        this._median = median;
+    }
 
     // Function to print binary tree in 2D
     // It does reverse inorder traversal
@@ -328,7 +368,5 @@ public class WireBST{
     *
     *
     * */
-    
-}  // end of WireBST class
 
-}
+}   // end of WireBST class
