@@ -114,7 +114,7 @@ public class WireBST{
     private void updateMedianInsert(WireBSTNode newNode){
         if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ){
             if (this.getNodeCounter() % 2 == 0){
-                this.setMedian ( this.getMedianWireBST().getSeccesur() ) ;
+                this.setMedian ( this.getMedianWireBST().getSuccesor() ) ;
             }
         else
             if (this.getNodeCounter() % 2 == 1){
