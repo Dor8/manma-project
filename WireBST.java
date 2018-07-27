@@ -15,10 +15,9 @@ public class WireBST{
     public Label helloWorld;  // lable for the gui
 
     // constractor
-    public WireBST(int studentNum , String name )
+    public WireBST( )
     {
-        WireBSTNode head = new WireBSTNode(studentNum , name);
-        _head = head ;
+        _head = null ;
         _median = null;
         _nodeCounter = 0;
 
