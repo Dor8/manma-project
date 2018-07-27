@@ -124,7 +124,7 @@ public class WireBST{
      */
     private void removeDeepLeaf(WireBSTNode node){
         if (node.getParent() == null){
-            _head = null;
+            this.setHead(null);
             return;
         }
         if (node.equal(node.getParent().getRight())) {
@@ -168,7 +168,7 @@ public class WireBST{
     private void removeNodeWithTwoSons(WireBSTNode node){
         WireBSTNode temp = node.getSuccessor();
         if (node.getParent() == null )){
-            _head = temp;
+            this.setHead(temp);
             temp.setRight(node.getRight());
             temp.setLeft(node.getLeft());
         } else if (node.equal(node.getParent().getRight())){
