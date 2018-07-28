@@ -85,10 +85,9 @@ public class WireBSTNode {
      */
     public boolean isRealRight ()
     {
-        if (this == null)
+        if (this == null || this.getRight() == null) {
             return false;
-        if (this.getRight() == null)
-            return false;
+        }
         return (this.getRight().getParent().equal(this) : true ? false );
     }
 
@@ -99,10 +98,9 @@ public class WireBSTNode {
      */
     public boolean isRealLeft ()
     {
-        if (this == null)
+        if (this == null || this.getLeft() == null){
             return false;
-        if (this.getLeft() == null)
-            return false;
+        }
         return (this.getLeft().getParent().equal(this) : true ? false );
     }
 
