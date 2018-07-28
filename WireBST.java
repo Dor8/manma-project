@@ -111,21 +111,42 @@ public class WireBST{
         newNode.setLeft(currentNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
     }
 
+    /**
+     * update the median after insert a node
+     * @param node, the node that inserted
+     */
     private void updateMedianInsert(WireBSTNode newNode){
-        if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() )
-            if (this.getNodeCounter() % 2 == 0)
-                this.setMedian ( this.getMedianWireBST().getSuccessor() ) ;
-        else if (this.getNodeCounter() % 2 == 1)
-            this.setMedian ( this.getMedianWireBST().getPredecessor() ) ;
+        if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ) {
+            if (this.getNodeCounter() % 2 == 0) {
+                this.setMedian(this.getMedianWireBST().getSuccessor());
+            }
+        }
+        else if (this.getNodeCounter() % 2 == 1) {
+            this.setMedian(this.getMedianWireBST().getPredecessor());
+        }
         this._nodeCounter ++;
     }
 
     /**
-     * remove of the node WireBST
+     * remove the student that is number is the given parameter
+     * @param studentNum, the node who include that number
+     * @return true if the node was removed, else false
+     */
+    public boolean removeWireBSTNode(int studentNum){
+        wireBSTNode temp = searchWireBST( studentNum );
+        if (temp == null){
+            return false;
+        } else {
+           removeWireBSTNode(temp);
+           return true;
+        }
+    }
+
+    /**
+     * overloading the removeWireBSTNode function, remove node who exist in the tree
      * @param node is the node to remove.
      */
     public void removeWireBSTNode(WireBSTNode node){
-        if ( node == null) return;
         if ( ! node.isRealLeft() && ! node.isRealRight() ){
             removeDeepLeaf(node);
         }
@@ -145,16 +166,36 @@ public class WireBST{
      * @param node. the node we wish to remove
      */
     private void removeDeepLeaf(WireBSTNode node){
-        if (node.getParent() == null){
+        if (node.getParent() == null){                              //in case node is root and has no sons
             this.setHead(null);
-            return;
+            this.setMedian(null);
         }
-        if (node.equal(node.getParent().getRight())) {
+        else if (node.equal(node.getParent().getRight())) {
             node.getParent().setRight(node.getRight());
+            if (node.setStudentNum > median){
+                //this.setMedian(getPredecessor(getMedianWireBST()));
+            }
         }
         else {
             node.getParent().setLeft(node.getLeft());
         }
+    }
+
+    /**
+     * update the median after remove of a node
+     * @param node, the node that removed
+     */
+
+    private void updateMedianRemove(WireBSTNode node){
+        if (this.getNodeCounter() % 2 == 0) {
+            if (node.getStudentNum() <= this.getMedianWireBST().getStudentNum())
+                this.setMedian(this.getMedianWireBST().getSuccessor());
+        }
+        else  {
+            if (node.getStudentNum() >= this.getMedianWireBST().getStudentNum())
+            this.setMedian(this.getMedianWireBST().getPredecessor());
+        }
+        this._nodeCounter --;
     }
 
     /**
@@ -208,7 +249,7 @@ public class WireBST{
 
 
     // search for node WireBST
-    public void searchWireBST( WireBSTNode node ){
+    public void searchWireBST( int studentNum ){
 
 
     }
