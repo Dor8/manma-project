@@ -161,10 +161,8 @@ public class WireBST{
         return temp ;
     }
 
-    // find the Successor of the node WireBST
-
     /**
-     *
+     * find the Successor of the node WireBST.
      * @param node is the current node, that looking for her's successor.
      * @return the successor of node.
      */
@@ -177,14 +175,10 @@ public class WireBST{
         for(temp = node.getRight(); temp.isRealLeft() ; temp = temp.getLeft() )  // temp one step to the right, and then run all the way left, tilll he reach a non-real son.
             ;
         return temp ;
-
-
     }
 
-    // find the Predecessor of the node WireBST
-
     /**
-     *
+     * find the Predecessor of the node WireBST.
      * @param node is the current node, that looking for her's predecessor.
      * @return the predecessor of node.
      */
@@ -197,7 +191,6 @@ public class WireBST{
         for(temp = node.getLeft(); temp.isRealRight() ; temp = temp.getRight() )  // temp go one step to the left, and then run all the way right, tilll he reach a non-real son.
             ;
         return temp ;
-
     }
 
     /*
@@ -224,8 +217,6 @@ public class WireBST{
         while (temp.getRight() != null)
             temp = temp.getRight();
         return temp;
-
-
     }
 
     // print the WireBST as pre order
