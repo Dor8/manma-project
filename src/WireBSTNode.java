@@ -88,7 +88,7 @@ public class WireBSTNode {
         if (this == null || this.getRight() == null) {
             return false;
         }
-        return (this.getRight().getParent().equal(this) : true ? false );
+        return (this.getRight().getParent().equal(this) );
     }
 
 
@@ -101,7 +101,7 @@ public class WireBSTNode {
         if (this == null || this.getLeft() == null){
             return false;
         }
-        return (this.getLeft().getParent().equal(this) : true ? false );
+        return ( this.getLeft().getParent().equal(this) ) ;
     }
 
 
@@ -112,7 +112,7 @@ public class WireBSTNode {
      * @return true if node is equal to this node.
      */
     public boolean equal(WireBSTNode node){
-        return (this.getStudentNum() == node.getStudentNum() : true ? false);
+        return ( this.getStudentNum() == node.getStudentNum() ) ;
     }
 
 

@@ -1,8 +1,6 @@
 // this class holds the data structure of wire binary search tree
 
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
 //import WireBSTNode; //needed?
 
 public class WireBST{
@@ -12,9 +10,10 @@ public class WireBST{
     private WireBSTNode _median;
     private int _nodeCounter;
 
-    public Label helloWorld;  // lable for the gui
 
-    // constractor
+    /**
+     * constractor
+     */
     public WireBST()
     {
         _head = null ;
@@ -22,8 +21,6 @@ public class WireBST{
         _nodeCounter = 0;
     }
 
-    public WireBST() {
-    }
 
 
     public WireBSTNode getHead(){
@@ -42,8 +39,8 @@ public class WireBST{
 
     /**
      * insert of the node to the WireBST
-     * @param studentNum
-     * @param studentName
+     * @param studentNum the student number
+     * @param studentName the student name
      */
     public boolean insertWireBSTNode(int studentNum , String studentName){
         WireBSTNode newNode = new WireBSTNode(studentNum , studentName);
@@ -53,24 +50,24 @@ public class WireBST{
         if( currentNode == null ) // empty tree case
         {
             this.setHead(newNode);
-            this.setMedian(newnode);
+            this.setMedian(newNode);
             _nodeCounter ++ ;
             return true;
         }
 
         if( searchWireBST(newNode.getStudentNum()) != null ){
-            System.Out.Println( Constants.ERROR_INSERT);
+            System.out.println( Constants.ERROR_INSERT);
             return false;
         }
 
 
-        while ( ! InsertedFlag )
+        while ( ! insertedFlag )
         {
             if (currentNode.getStudentNum() > newNode.getStudentNum())
                 if ( ! currentNode.isRealLeft())
                 {
                     insertToLeft(currentNode , newNode);
-                    InsertedFlag = true;
+                    insertedFlag = true;
                 }
                 else
                     currentNode = currentNode.getLeft();
@@ -79,7 +76,7 @@ public class WireBST{
                 {
 
                     insertToRight(currentNode , newNode);
-                    InsertedFlag = true;
+                    insertedFlag = true;
                 }
                 else
                     currentNode = currentNode.getRight();
@@ -90,32 +87,32 @@ public class WireBST{
 
     /**
      * insert the new node to the left of the current node.
-     * @param current is the node that will get a new left son.
+     * @param currentNode is the node that will get a new left son.
      * @param newNode is the node to add.
      */
-    private void insertToLeft(WireBSTNode current , WireBSTNode newNode ){
-        newNode.setParent(current);
-        newNode.setLeft(current.getLeft());  // make the predeccessor of the leaf to be the predeccessor of the new node.
-        current.setLeft(newNode);  // insert the new node to her place!
+    private void insertToLeft(WireBSTNode currentNode , WireBSTNode newNode ){
+        newNode.setParent(currentNode);
+        newNode.setLeft(currentNode.getLeft());  // make the predeccessor of the leaf to be the predeccessor of the new node.
+        currentNode.setLeft(newNode);  // insert the new node to her place!
         newNode.setRight(currentNode); // make the successor of the new node to be her parent, because it is the successor (only in insert to right!).
     }
 
     /**
      * insert the new node to the right of the current node.
-     * @param current is the node that will get a new right son.
+     * @param currentNode is the node that will get a new right son.
      * @param newNode is the node to add.
      */
-    private void insertToRight(WireBSTNode current , WireBSTNode newNode ){
-        newNode.setParent(current);
-        newNode.setRight(current.getRight());  // make the successor of the leaf to be the successor of the new node.
-        current.setRight(newNode);  // insert the new node to her place!
+    private void insertToRight(WireBSTNode currentNode , WireBSTNode newNode ){
+        newNode.setParent(currentNode);
+        newNode.setRight(currentNode.getRight());  // make the successor of the leaf to be the successor of the new node.
+        currentNode.setRight(newNode);  // insert the new node to her place!
         newNode.setLeft(currentNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
     }
 
     private void updateMedianInsert(WireBSTNode newNode){
         if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ){
             if (this.getNodeCounter() % 2 == 0){
-                this.setMedian ( getSuccesor( this.getMedianWireBST() ) ) ;
+                this.setMedian ( getSuccessor( this.getMedianWireBST() ) ) ;
             }
         else
             if (this.getNodeCounter() % 2 == 1){
@@ -130,7 +127,7 @@ public class WireBST{
     }
 
     // remove of the node WireBST
-    public void removeWireBST(WireBSTNode node){
+    public void removeWireBST(int studetNum){
 
 
     }
@@ -141,7 +138,7 @@ public class WireBST{
      * @return pointer to the node if find it in the tree, or null if its not in the tree.
      */
     public WireBSTNode searchWireBST(int studentNum){
-        if ( this == null || this.getHead() == null )  // edge case of null or empty tree
+        if ( this.getHead() == null)  // edge case of null or empty tree
             return null;
         WireBSTNode temp = this.getHead();
         while( ( temp != null ) && ( studentNum != temp.getStudentNum() ) ){
@@ -172,7 +169,7 @@ public class WireBST{
         if ( ! node.isRealRight() )     // if the right son isnt real, so he is the successor!
             return node.getRight();
         WireBSTNode temp;
-        for(temp = node.getRight(); temp.isRealLeft() ; temp = temp.getLeft() )  // temp one step to the right, and then run all the way left, tilll he reach a non-real son.
+        for( temp = node.getRight(); temp.isRealLeft() ; temp = temp.getLeft() )  // temp one step to the right, and then run all the way left, tilll he reach a non-real son.
             ;
         return temp ;
     }
@@ -198,7 +195,7 @@ public class WireBST{
     * the leftest node in the BST is the min node in it
     * */
     public WireBSTNode minWireBST(){
-        if( this == null || this.getHead() == null )
+        if( this.getHead() == null )
             return null;
         WireBSTNode temp = this.getHead();
         while (temp.getLeft() != null)
@@ -210,8 +207,8 @@ public class WireBST{
     * find the maximum node WireBST
     * the rightest node in the BST is the max node in it
     * */
-    public void maxWireBST(){
-        if(this == null || this.getHead() == null)
+    public WireBSTNode maxWireBST(){
+        if( this.getHead() == null )
             return null;
         WireBSTNode temp = this.getHead();
         while (temp.getRight() != null)
@@ -274,7 +271,7 @@ public class WireBST{
         System.out.println();    // go one line down
         for (int i = Constants.COUNT ; i < space; i++)
             System.out.println(" ");
-        System.out.println(Integer.valueOf(head.getStudentNum()) + head.getName() + "\n" );
+        System.out.println(Integer.valueOf(head.getStudentNum()) + head.getStudentName() + "\n" );
 
         // Process left child
         print2DNodeWireBST(head.getLeft(), space);
