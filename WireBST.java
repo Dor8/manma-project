@@ -45,7 +45,7 @@ public class WireBST{
      * @param studentNum
      * @param studentName
      */
-    public void insertWireBSTNode(int studentNum , String studentName){
+    public boolean insertWireBSTNode(int studentNum , String studentName){
         WireBSTNode newNode = new WireBSTNode(studentNum , studentName);
         WireBSTNode currentNode = this.getHead(); // alias, its a pointer to where i will insert the new node
         boolean insertedFlag = false;
@@ -55,12 +55,12 @@ public class WireBST{
             this.setHead(newNode);
             this.setMedian(newnode);
             _nodeCounter ++ ;
-            return;
+            return true;
         }
 
         if( searchWireBST(newNode.getStudentNum()) != null ){
             System.Out.Println( Constants.insertError);
-            return;
+            return false;
         }
 
 
@@ -85,6 +85,7 @@ public class WireBST{
                     currentNode = currentNode.getRight();
         }
         updateMedianInsert(newNode);
+        return true;
     }
 
     /**
@@ -114,11 +115,11 @@ public class WireBST{
     private void updateMedianInsert(WireBSTNode newNode){
         if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ){
             if (this.getNodeCounter() % 2 == 0){
-                this.setMedian ( this.getMedianWireBST().getSuccesor() ) ;
+                this.setMedian ( getSuccesor( this.getMedianWireBST() ) ) ;
             }
         else
             if (this.getNodeCounter() % 2 == 1){
-                this.setMedian ( this.getMedianWireBST().getPredecessor() ) ;
+                this.setMedian ( getPredecessor( this.getMedianWireBST() ) ) ;
             }
         this._nodeCounter ++;
         }
@@ -134,22 +135,62 @@ public class WireBST{
 
     }
 
-    // search for node WireBST
-    public void searchWireBST(WireBSTNode node){
-
-
+    /**
+     *
+     * @param studentNum the key to look for in the tree.
+     * @return pointer to the node if find it in the tree, or null if its not in the tree.
+     */
+    public WireBSTNode searchWireBST(int studentNum){
+        if ( this == null || this.getHead() == null )  // edge case of null or empty tree
+            return null;
+        WireBSTNode temp = this.getHead();
+        while( ( temp != null ) && ( studentNum != temp.getStudentNum() ) ){
+            if( ( studentNum < temp.getStudentNum() )) {
+                if (temp.isRealLeft())
+                    temp = temp.getLeft();
+                else
+                    temp = null;
+            }
+            else {
+                if (temp.isRealRight())
+                    temp = temp.getRight();
+                else
+                    temp = null;
+            }
+        }
+        return temp ;
     }
 
-    // find the Successor of the node WireBST
-    public void getSuccessor(WireBSTNode node){
-
-
+    /**
+     * find the Successor of the node WireBST.
+     * @param node is the current node, that looking for her's successor.
+     * @return the successor of node.
+     */
+    public WireBSTNode getSuccessor(WireBSTNode node){
+        if ( node == null )
+            return null;
+        if ( ! node.isRealRight() )     // if the right son isnt real, so he is the successor!
+            return node.getRight();
+        WireBSTNode temp;
+        for(temp = node.getRight(); temp.isRealLeft() ; temp = temp.getLeft() )  // temp one step to the right, and then run all the way left, tilll he reach a non-real son.
+            ;
+        return temp ;
     }
 
-    // find the Predecessor of the node WireBST
-    public void getPredecessor(WireBSTNode node){
-
-
+    /**
+     * find the Predecessor of the node WireBST.
+     * @param node is the current node, that looking for her's predecessor.
+     * @return the predecessor of node.
+     */
+    public WireBSTNode getPredecessor(WireBSTNode node){
+        if ( node == null )
+            return null;
+        if ( ! node.isRealLeft() )     // if the left son isnt real, so he is the successor!
+            return node.getLeft();
+        WireBSTNode temp;
+        for(temp = node.getLeft(); temp.isRealRight() ; temp = temp.getRight() )  // temp go one step to the left, and then run all the way right, tilll he reach a non-real son.
+            ;
+        return temp ;
     }
 
     /*
@@ -176,8 +217,6 @@ public class WireBST{
         while (temp.getRight() != null)
             temp = temp.getRight();
         return temp;
-
-
     }
 
     // print the WireBST as pre order
@@ -212,7 +251,7 @@ public class WireBST{
      *
      * @param median is the new median to be set.
      */
-    public void setMedian(WireBSTNode median) {
+    private void setMedian(WireBSTNode median) {
         this._median = median;
     }
 
