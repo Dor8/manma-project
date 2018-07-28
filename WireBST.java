@@ -171,12 +171,11 @@ public class WireBST{
             this.setMedian(null);
         }
         else if (node.equal(node.getParent().getRight())) {
+            updateMedianRemove(node);
             node.getParent().setRight(node.getRight());
-            if (node.setStudentNum > median){
-                //this.setMedian(getPredecessor(getMedianWireBST()));
-            }
         }
         else {
+            updateMedianRemove(node);
             node.getParent().setLeft(node.getLeft());
         }
     }
@@ -185,7 +184,6 @@ public class WireBST{
      * update the median after remove of a node
      * @param node, the node that removed
      */
-
     private void updateMedianRemove(WireBSTNode node){
         if (this.getNodeCounter() % 2 == 0) {
             if (node.getStudentNum() <= this.getMedianWireBST().getStudentNum())
@@ -199,30 +197,54 @@ public class WireBST{
     }
 
     /**
-     * removing a node (who is right son) with just one son
+     * removing a node with only right son
      * @param node. the node we wish to remove
      */
     private void removeNodeWithOnlyRightSon(WireBSTNode node){
-        if (node.equal(node.getParent().getRight())){             // in case the node is a right son
-            node.getParent().setRight(node.getRight());
+        if (node.getParent() == null){
+            updateMedianRemove(node);
+            this.setHead(node.getRight());
+            node.getRight().setRight();
+            node.getRight().setLeft();
         }
-        if (node.equal(node.getParent().getLeft())){              // in case the node is a left son
+        if else (node.equal(node.getParent().getRight())){
+            updateMedianRemove(node);
+            node.getRight().setParent(node.getParent());
+            node.getParent().setRight(node.getRight());
+            node.getRight().setLeft(node.getLeft());
+
+        }
+        else {
+            updateMedianRemove(node);
+            node.getRight().setParent(node.getParent);
             node.getParent().setLeft(node.getRight());
+            node.getRight().setLeft(node.getLeft());
         }
     }
 
 
 
     /**
-    * removing a node (who is left son) with just one son
+    * removing a node with only left son
     * @param node. the node we wish to remove
     */
     private void removeNodeWithOnlyLeftSon(WireBSTNode node){
-        if (node.equal(node.getParent().getRight())){             // in case the node is a right son
-            node.getParent().setRight(node.getLeft());
+        if (node.getParent() == null){
+            updateMedianRemove(node);
+            _head = node.getLeft();
+
         }
-        if (node.equal(node.getParent().getLeft())){              // in case the node is a left son
+        if else (node.equal(node.getParent().getRight())){
+            updateMedianRemove(node);
+            node.getLeft().setParent(node.getParent());
+            node.getParent().setRight(node.getLeft());
+            node.getLeft().setRight(node.getRight());
+        }
+        else {
+            updateMedianRemove(node);
             node.getParent().setLeft(node.getLeft());
+            node.getLeft().setParent(node.getParent());
+            node.getLeft().setRight(node.getRight());
         }
     }
 
