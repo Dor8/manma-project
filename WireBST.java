@@ -45,7 +45,7 @@ public class WireBST{
      * @param studentNum
      * @param studentName
      */
-    public void insertWireBSTNode(int studentNum , String studentName){
+    public boolean insertWireBSTNode(int studentNum , String studentName){
         WireBSTNode newNode = new WireBSTNode(studentNum , studentName);
         WireBSTNode currentNode = this.getHead(); // alias, its a pointer to where i will insert the new node
         boolean insertedFlag = false;
@@ -55,12 +55,12 @@ public class WireBST{
             this.setHead(newNode);
             this.setMedian(newnode);
             _nodeCounter ++ ;
-            return;
+            return true;
         }
 
         if( searchWireBST(newNode.getStudentNum()) != null ){
             System.Out.Println( Constants.insertError);
-            return;
+            return false;
         }
 
 
@@ -85,6 +85,7 @@ public class WireBST{
                     currentNode = currentNode.getRight();
         }
         updateMedianInsert(newNode);
+        return true;
     }
 
     /**
@@ -134,10 +135,30 @@ public class WireBST{
 
     }
 
-    // search for node WireBST
-    public void searchWireBST(WireBSTNode node){
-
-
+    /**
+     *
+     * @param studentNum the key to look for in the tree.
+     * @return pointer to the node if find it in the tree, or null if its not in the tree.
+     */
+    public WireBSTNode searchWireBST(int studentNum){
+        if ( this == null || this.getHead() == null )  // edge case of null or empty tree
+            return null;
+        WireBSTNode temp = this.getHead();
+        while( ( temp != null ) && ( studentNum != temp.getStudentNum() ) ){
+            if( ( studentNum < temp.getStudentNum() )) {
+                if (temp.isRealLeft())
+                    temp = temp.getLeft();
+                else
+                    temp = null;
+            }
+            else {
+                if (temp.isRealRight())
+                    temp = temp.getRight();
+                else
+                    temp = null;
+            }
+        }
+        return temp ;
     }
 
     // find the Successor of the node WireBST
@@ -239,7 +260,7 @@ public class WireBST{
      *
      * @param median is the new median to be set.
      */
-    public void setMedian(WireBSTNode median) {
+    private void setMedian(WireBSTNode median) {
         this._median = median;
     }
 
