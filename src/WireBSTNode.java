@@ -116,12 +116,6 @@ public class WireBSTNode {
     }
 
 
-
-
-
-
-
-
-
-
+    public void printData() {
+    }
 }

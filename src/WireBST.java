@@ -169,7 +169,7 @@ public class WireBST{
         if ( ! node.isRealRight() )     // if the right son isnt real, so he is the successor!
             return node.getRight();
         WireBSTNode temp;
-        for( temp = node.getRight(); temp.isRealLeft() ; temp = temp.getLeft() )  // temp one step to the right, and then run all the way left, tilll he reach a non-real son.
+        for( temp = node.getRight(); temp.isRealLeft() ; temp = temp.getLeft() )  // temp one step to the right, and then run all the way left, till he reach a non-real son.
             ;
         return temp ;
     }
@@ -185,7 +185,7 @@ public class WireBST{
         if ( ! node.isRealLeft() )     // if the left son isnt real, so he is the successor!
             return node.getLeft();
         WireBSTNode temp;
-        for(temp = node.getLeft(); temp.isRealRight() ; temp = temp.getRight() )  // temp go one step to the left, and then run all the way right, tilll he reach a non-real son.
+        for(temp = node.getLeft(); temp.isRealRight() ; temp = temp.getRight() )  // temp go one step to the left, and then run all the way right, till he reach a non-real son.
             ;
         return temp ;
     }
@@ -217,19 +217,19 @@ public class WireBST{
     }
 
     // print the WireBST as pre order
-    public void preOrderScan(WireBSTNode node){
+    public void preOrderScan(){
 
 
     }
 
     // print the WireBST as in order
-    public void inOrderScan(WireBSTNode node){
+    public void inOrderScan(){
 
 
     }
 
     // print the WireBST as post order
-    public void postOrderScan(WireBSTNode node){
+    public void postOrderScan(){
 
 
     }
