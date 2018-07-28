@@ -4,12 +4,10 @@ public class WireBSTDriver {
     static boolean isRunning = true; // flag to indicate from the user when to exit from the program
 
 
-
     public static void main(String[] args) {
 
 
         // define all the variables of the main function: wireBST and more
-
 
 
 
