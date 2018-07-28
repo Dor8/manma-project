@@ -1,3 +1,6 @@
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
+import java.util.*;
 public class WireBSTDriver {
 
 
@@ -7,17 +10,28 @@ public class WireBSTDriver {
 
     public static void main(String[] args) {
 
-
         // define all the variables of the main function: wireBST and more
-
+        Scanner scanner = new Scanner(System.in);
 
 
 
 
         // get the input from the user for build the tree (maybe in while loop? how the program ends?)
         while (isRunning){
-            // get input from the user: which action to do?
+            System.out.println(Constants.PROMPT_USER);
+            userInput = scanner.nextLine();                                   // get input from the user: which action to do? + parameters
+            parseLine(command , firstParam , secondParam, userInput);         //
+            switch (command){
+                case "exit" : exit();
+                              break;
+                case "help" : System.out.Println(HELP_TEXT);
+                                break;
+                case "insert" : insert( firstParam , secondParam );
+                                break;
+                case "remove" : remove( firstParam );
+                                break;
 
+            }
 
 
 
