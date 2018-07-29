@@ -10,7 +10,7 @@ public class Constants {
     public static final String PROMPT_USER = "please insert one line that contain the command and parameters.\n for help, type help.";
     public static final String HELP_TEXT =
             "insert a line that contain the command then the parameters. \n" +
-            "the methods are: " +
+            "the methods are:\n" +
             "help - list all the possible commands."+
             "exit - exit from the program.\n" +
             "insert <studentNum> <studentName> - insert the student.\n" +

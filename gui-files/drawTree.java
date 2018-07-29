@@ -12,7 +12,7 @@ public class drawTree {
 
         System.out.println("<div>");
         System.out.println("<p>");
-        System.out.println(head.getData());
+        head.printData();
         System.out.println("</p>");
         drawTreeHtml(head.getLeft());
         drawTreeHtml(head.getRight());

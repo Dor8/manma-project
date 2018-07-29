@@ -10,10 +10,10 @@ public class WireBSTDriver {
 
         Scanner scanner = new Scanner(System.in);
 
-        String command;
-        String firstParam;
-        String secondParam;
-        String userInput;
+        String command = "" ;
+        String firstParam = "";
+        String secondParam = "";
+        String userInput = "" ;
         WireBST tree = new WireBST();
 
         // get the input from the user for build the tree (maybe in while loop? how the program ends?)
@@ -23,8 +23,13 @@ public class WireBSTDriver {
 
             String parts []  = userInput.split(" ") ;
             command = parts [0];
-            firstParam = parts [1];
-            secondParam = parts [2];
+            if ( parts.length > 1 ) {
+                firstParam = parts[1];
+                if (parts.length > 2 ){
+                    secondParam = parts [2];
+                }
+            }
+
 
             switch (command){
                 case "help" : helpUser();
