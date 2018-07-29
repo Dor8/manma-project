@@ -78,7 +78,7 @@ public class WireBSTDriver {
     }
 
     private static void median(WireBST tree) {
-        tree.getMedianWireBST().printData();
+        WireBSTNode.printData(tree.getMedianWireBST());
     }
 
 
@@ -95,23 +95,23 @@ public class WireBSTDriver {
     }
 
     private static void min(WireBST tree) {
-        tree.minWireBST().printData();
+        WireBSTNode.printData(tree.minWireBST());
     }
 
     private static void max(WireBST tree) {
-        tree.maxWireBST().printData();
+        WireBSTNode.printData(tree.maxWireBST());
     }
 
     private static void predecessor(WireBST tree, int studentNum) {
-        tree.getPredecessor( tree.searchWireBST( studentNum ) ).printData();
+        WireBSTNode.printData(tree.getPredecessor( tree.searchWireBST( studentNum ) ));
     }
 
     private static void successor(WireBST tree, int studentNum) {
-        tree.getSuccessor( tree.searchWireBST( studentNum ) ).printData();
+        WireBSTNode.printData(tree.getSuccessor( tree.searchWireBST( studentNum ) ));
     }
 
     private static void search(WireBST tree, int studentNum) {
-        tree.searchWireBST(studentNum).printData();
+        WireBSTNode.printData(tree.searchWireBST(studentNum));
 
     }
 

@@ -98,7 +98,7 @@ public class WireBSTNode {
      */
     public boolean isRealLeft ()
     {
-        if (this == null || this.getLeft() == null){
+        if (this.getLeft() == null){
             return false;
         }
         return ( this.getLeft().getParent().equal(this) ) ;
@@ -116,6 +116,27 @@ public class WireBSTNode {
     }
 
 
-    public void printData() {
+    /**
+     *
+     * @param node
+     */
+    public static void printData(WireBSTNode node) {
+        String nodeData ;
+        if ( node == null ){
+            System.out.println(Constants.ERROR_NULL);
+        }
+        else{
+            nodeData = String.format("%d", Integer.valueOf(node.getStudentNum()));
+            if ( ! node.isRealLeft() ){
+                nodeData = "(" + Integer.valueOf(node.getLeft().getStudentNum()) + "<-) " + nodeData;
+            }
+            if ( ! node.isRealRight() ){
+                nodeData = nodeData + " (->" + Integer.valueOf(node.getRight().getStudentNum()) + ")" ;
+            }
+            nodeData = nodeData + " " + node.getStudentName();
+
+            System.out.println( nodeData );
+    }
+
     }
 }
