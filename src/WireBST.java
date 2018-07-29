@@ -111,7 +111,7 @@ public class WireBST{
 
     /**
      * update the median after insert a node
-     * @param node, the node that inserted
+     * @param newNode the node that inserted
      */
     private void updateMedianInsert(WireBSTNode newNode){
         if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ) {
@@ -126,8 +126,8 @@ public class WireBST{
     }
 
     /**
-     * remove the student that is number is the given parameter
-     * @param studentNum, the node who include that number
+     * remove the student that his number is the given parameter
+     * @param studentNum , the key for node to remove
      * @return true if the node was removed, else false
      */
     public boolean removeWireBSTNode(int studentNum){
@@ -135,15 +135,12 @@ public class WireBST{
         WireBSTNode temp = searchWireBST( studentNum );
 
         if (temp == null){
-
             return false;
         }
-
         else {
-
-           removeWireBSTNode(temp);
-           return true;
-
+            updateMedianRemove(temp);
+            removeWireBSTNode(temp);
+            return true;
         }
     }
 
@@ -153,27 +150,17 @@ public class WireBST{
      */
     public void removeWireBSTNode(WireBSTNode node){
 
-        if ( ! node.isRealLeft() && ! node.isRealRight() ){
-
+        if ( ! node.isRealLeft() && ! node.isRealRight() ){        //** in case of removing deep leaf
             removeDeepLeaf(node);
         }
-
-        if ((node.isRealRight()) && (!node.isRealLeft())){    //** in case of removing node who has only right son
-
+        else if ((node.isRealRight()) && (!node.isRealLeft())){    //** in case of removing node who has only right son
             removeNodeWithOnlyRightSon(node);
-
         }
-
-        if ((!node.isRealRight()) && (node.isRealLeft())){    //** in case of removing node who has only left son
-
+        else if ((!node.isRealRight()) && (node.isRealLeft())){    //** in case of removing node who has only left son
             removeNodeWithOnlyLeftSon(node);
-
         }
-
-        if ((node.isRealRight()) && (node.isRealLeft())) {    //** in case of removing node who has two sons
-
+        else {                                                     //** in case of removing node who has two sons
             removeNodeWithTwoSons(node);
-
         }
     }
 
@@ -184,23 +171,15 @@ public class WireBST{
     private void removeDeepLeaf(WireBSTNode node){
 
         if (node.getParent() == null){                              //in case node is root and has no sons
-
             this.setHead(null);
-            this.setMedian(null);
-
         }
 
-        else if (node.equal(node.getParent().getRight())) {
-
-            updateMedianRemove(node);
+        else if (node.equal(node.getParent().getRight())) {         //in case node is a right deep leaf
             node.getParent().setRight(getSuccessor(node));
         }
 
         else {
-
-            updateMedianRemove(node);
-            node.getParent().setLeft(getPredecessor(node));
-
+            node.getParent().setLeft(getPredecessor(node));         // in case node is a left deep leaf
         }
     }
 
@@ -209,6 +188,10 @@ public class WireBST{
      * @param node, the node that removed
      */
     private void updateMedianRemove(WireBSTNode node){
+
+        if (this.getNodeCounter() == 1) {
+            this.setMedian(null);
+        }
 
         if (this.getNodeCounter() % 2 == 0) {
 
@@ -234,31 +217,21 @@ public class WireBST{
      */
     private void removeNodeWithOnlyRightSon(WireBSTNode node){
 
-        if (node.getParent() == null){
+        node.getRight().setParent(node.getParent());
 
-            updateMedianRemove(node);
-            node.getRight().setParent(node.getParent());
+        if (node.getParent() == null){                                  //in case node is root
             this.setHead(node.getRight());
             getSuccessor(node).setLeft(node.getLeft());
-
         }
 
-        else if  (node.equal(node.getParent().getRight())){
-
-            updateMedianRemove(node);
-            node.getRight().setParent(node.getParent());
+        else if  (node.equal(node.getParent().getRight())){            //in case node is right son
             node.getParent().setRight(node.getRight());
             getSuccessor(node).setLeft(node.getParent());
-
         }
 
-        else {
-
-            updateMedianRemove(node);
-            node.getRight().setParent(node.getParent());
+        else {                                                         //in case node is left son
             node.getParent().setLeft(node.getRight());
             getSuccessor(node).setLeft(getPredecessor(node));
-
         }
     }
 
@@ -271,30 +244,21 @@ public class WireBST{
     private void removeNodeWithOnlyLeftSon(WireBSTNode node){
 
         if (node.getParent() == null){
-
-            updateMedianRemove(node);
             this.setHead(node.getLeft());
             node.getLeft().setParent(node.getParent());
             getPredecessor(node).setRight(node.getRight());
-
         }
 
         else if (node.equal(node.getParent().getRight())){
-
-            updateMedianRemove(node);
             node.getLeft().setParent(node.getParent());
             node.getParent().setRight(node.getLeft());
             getPredecessor(node).setRight(getSuccessor(node));
-
         }
 
         else {
-
-            updateMedianRemove(node);
             node.getParent().setLeft(node.getLeft());
             node.getLeft().setParent(node.getParent());
             getPredecessor(node).setRight(getSuccessor(node));
-
         }
 
     }
@@ -307,8 +271,7 @@ public class WireBST{
 
         WireBSTNode temp = getSuccessor(node);
 
-        if (node.getParent() == null ){
-
+        if (node.getParent() == null ){                                 //in case node is root
             this.setHead(temp);
             temp.setParent(node.getParent());
             temp.setRight(node.getRight());
@@ -316,11 +279,9 @@ public class WireBST{
             temp.setLeft(node.getLeft());
             node.getLeft().setParent(temp);
             getPredecessor(node).setRight(temp);
-
         }
 
-        else if (node.equal(node.getParent().getRight())){
-
+        else if (node.equal(node.getParent().getRight())){              //in case node is right son
             node.getParent().setRight(temp);
             temp.setParent(node.getParent());
             temp.setRight(node.getRight());
@@ -328,11 +289,9 @@ public class WireBST{
             temp.setLeft(node.getLeft());
             node.getLeft().setParent(temp);
             getPredecessor(node).setRight(temp);
-
         }
 
-        else {
-
+        else {                                                         //in case node is a left son
             node.getParent().setLeft(temp);
             temp.setParent(node.getParent());
             temp.setRight(node.getRight());
@@ -340,7 +299,6 @@ public class WireBST{
             temp.setLeft(node.getLeft());
             node.getLeft().setParent(temp);
             getPredecessor(node).setRight(temp);
-
         }
     }
 
