@@ -289,12 +289,10 @@ public class WireBST{
         }
 
         else {
-
             updateMedianRemove(node);
             node.getParent().setLeft(node.getLeft());
             node.getLeft().setParent(node.getParent());
             getPredecessor(node).setRight(getSuccessor(node));
-
         }
 
     }
@@ -308,40 +306,22 @@ public class WireBST{
         WireBSTNode temp = getSuccessor(node);
 
         if (node.getParent() == null ){
-
             this.setHead(temp);
-            temp.setParent(node.getParent());
-            temp.setRight(node.getRight());
-            node.getRight().setParent(temp);
-            temp.setLeft(node.getLeft());
-            node.getLeft().setParent(temp);
-            getPredecessor(node).setRight(temp);
-
         }
-
         else if (node.equal(node.getParent().getRight())){
-
             node.getParent().setRight(temp);
-            temp.setParent(node.getParent());
-            temp.setRight(node.getRight());
-            node.getRight().setParent(temp);
-            temp.setLeft(node.getLeft());
-            node.getLeft().setParent(temp);
-            getPredecessor(node).setRight(temp);
-
         }
-
         else {
-
             node.getParent().setLeft(temp);
-            temp.setParent(node.getParent());
-            temp.setRight(node.getRight());
-            node.getRight().setParent(temp);
-            temp.setLeft(node.getLeft());
-            node.getLeft().setParent(temp);
-            getPredecessor(node).setRight(temp);
-
         }
+        
+        temp.setParent(node.getParent());
+        temp.setRight(node.getRight());
+        node.getRight().setParent(temp);
+        temp.setLeft(node.getLeft());
+        node.getLeft().setParent(temp);
+        getPredecessor(node).setRight(temp);
+        
     }
 
 
