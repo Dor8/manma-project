@@ -32,7 +32,7 @@ public class WireBSTDriver {
 
 
             switch (command){
-                case "help" : helpUser();
+                case "help" : printHelp();
                               break;
                 case "exit" : exit();
                               break;
@@ -62,6 +62,7 @@ public class WireBSTDriver {
                     break;
                 case "file" : readFile( firstParam );
                     break;
+                default: printHelp();
             }
 
 
@@ -70,14 +71,17 @@ public class WireBSTDriver {
     }
 
     private static void readFile(String firstParam) {
+        System.out.printf("Read from file: %s\n" , firstParam);
     }
 
 
     private static void gui(WireBST tree) {
+        System.out.println("Gui is: ");
         WireBST.print2DNodeWireBST(tree.getHead() , Constants.ZERO);
     }
 
     private static void median(WireBST tree) {
+        System.out.print("Median is: ");
         WireBSTNode.printData(tree.getMedianWireBST());
     }
 
@@ -95,10 +99,12 @@ public class WireBSTDriver {
     }
 
     private static void min(WireBST tree) {
+        System.out.print("Min is: ");
         WireBSTNode.printData(tree.minWireBST());
     }
 
     private static void max(WireBST tree) {
+        System.out.print("Max is: ");
         WireBSTNode.printData(tree.maxWireBST());
     }
 
@@ -120,7 +126,7 @@ public class WireBSTDriver {
 
     }
 
-    private static void helpUser() {
+    private static void printHelp() {
         System.out.println(Constants.HELP_TEXT);
     }
 

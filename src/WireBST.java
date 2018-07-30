@@ -109,6 +109,7 @@ public class WireBST{
         newNode.setLeft(currentNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
     }
 
+    // FIXME this make a problem of null exception
     private void updateMedianInsert(WireBSTNode newNode){
         if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ){
             if (this.getNodeCounter() % 2 == 0){
@@ -118,7 +119,8 @@ public class WireBST{
             if (this.getNodeCounter() % 2 == 1){
                 this.setMedian ( getPredecessor( this.getMedianWireBST() ) ) ;
             }
-        this._nodeCounter ++;
+            this._nodeCounter ++;
+
         }
 
 
@@ -265,16 +267,21 @@ public class WireBST{
         space += Constants.COUNT;
 
         // Process right child first
-        print2DNodeWireBST(head.getRight() , space);
+        if (head.isRealRight()){
+            print2DNodeWireBST(head.getRight() , space);
+        }
 
         // Print current node after space count
         System.out.println();    // go one line down
         for (int i = Constants.COUNT ; i < space; i++)
-            System.out.println(" ");
-        System.out.println(Integer.valueOf(head.getStudentNum()) + head.getStudentName() + "\n" );
+            System.out.print(" ");
+        WireBSTNode.printData(head);
+        /*System.out.println(Integer.valueOf(head.getStudentNum()) + head.getStudentName() + "\n" );*/
 
         // Process left child
-        print2DNodeWireBST(head.getLeft(), space);
+        if (head.isRealLeft()){
+            print2DNodeWireBST(head.getLeft(), space);
+        }
     }
 
 

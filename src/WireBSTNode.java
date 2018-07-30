@@ -88,6 +88,9 @@ public class WireBSTNode {
         if (this == null || this.getRight() == null) {
             return false;
         }
+        if ( this.getRight().getParent() == null) {
+            return false;
+        }
         return (this.getRight().getParent().equal(this) );
     }
 
@@ -99,6 +102,9 @@ public class WireBSTNode {
     public boolean isRealLeft ()
     {
         if (this.getLeft() == null){
+            return false;
+        }
+        if ( this.getLeft().getParent() == null ) {
             return false;
         }
         return ( this.getLeft().getParent().equal(this) ) ;
@@ -117,8 +123,8 @@ public class WireBSTNode {
 
 
     /**
-     *
-     * @param node
+     * print the node data in this format : (pred<-)<studentNum>(->suc) . if it median, max or min, print it after the data.
+     * @param node the node to print
      */
     public static void printData(WireBSTNode node) {
         String nodeData ;
@@ -126,15 +132,30 @@ public class WireBSTNode {
             System.out.println(Constants.ERROR_NULL);
         }
         else{
-            nodeData = String.format("%d", Integer.valueOf(node.getStudentNum()));
-            if ( ! node.isRealLeft() ){
-                nodeData = "(" + Integer.valueOf(node.getLeft().getStudentNum()) + "<-) " + nodeData;
+            nodeData = String.valueOf(node.getStudentNum());
+            if ( node.getLeft() != null){
+                nodeData = "(" + String.valueOf(node.getLeft().getStudentNum()) + "<-) " + nodeData;
             }
-            if ( ! node.isRealRight() ){
-                nodeData = nodeData + " (->" + Integer.valueOf(node.getRight().getStudentNum()) + ")" ;
+            else if(node.getLeft() == null){
+                nodeData = "(n<-) " + nodeData;
             }
-            nodeData = nodeData + " " + node.getStudentName();
 
+            if (  node.getRight() != null ){
+                nodeData = nodeData + " (->" + String.valueOf(node.getRight().getStudentNum()) + ")" ;
+            }
+            else if(node.getRight() == null){
+                nodeData = nodeData + " (->n)" ;
+            }
+            /*nodeData = nodeData + " " + node.getStudentName();
+            if (node.equal(WireBST.getMedianWireBST())){
+                nodeData = nodeData + " median ";
+            }
+            if (node.equal(WireBST.maxWireBST())){
+                nodeData = nodeData + " max ";
+            }
+            if (node.equal(WireBST.minWireBST())){
+                nodeData = nodeData + " min ";
+            }*/
             System.out.println( nodeData );
     }
 

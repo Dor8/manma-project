@@ -8,7 +8,7 @@ public class Constants {
     public static final String ERROR_INSERT = "cant insert this student. number already exists.";
     public static final String ERROR_NULL = "node not found. this node is null.";
 
-    public static final String PROMPT_USER = "please insert one line that contain the command and parameters.\n for help, type help.";
+    public static final String PROMPT_USER = "\nplease insert one line that contain the command and parameters.\n for help, type help.";
     public static final String HELP_TEXT =
             "insert a line that contain the command then the parameters. \n" +
             "the methods are:\n" +
