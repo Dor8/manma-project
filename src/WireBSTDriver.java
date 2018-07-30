@@ -83,13 +83,13 @@ public class WireBSTDriver {
         WireBSTNode.printData(tree.getMedianWireBST());
     }
      private static void postorder(WireBST tree) {
-        tree.postOrderScan();
+        WireBST.postOrderScan(tree.getHead());
     }
      private static void inorder(WireBST tree) {
-        tree.inOrderScan();
+         tree.inOrderScan();
     }
      private static void preorder(WireBST tree) {
-        tree.preOrderScan();
+         WireBST.preOrderScan(tree.getHead());
     }
 
     private static void min(WireBST tree) {
@@ -116,7 +116,12 @@ public class WireBSTDriver {
     }
 
     private static void remove(WireBST tree, int studentNum ) {
-        tree.removeWireBST( studentNum ) ;
+        if (tree.removeWireBSTNode( studentNum )) {
+            System.out.printf(Constants.NODE_REMOVED, String.valueOf(studentNum));
+        }
+        else{
+            System.out.println(Constants.ERROR_REMOVE);
+        }
 
     }
 

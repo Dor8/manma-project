@@ -391,11 +391,12 @@ public class WireBST{
      * print the wireBST as pre oder
      * @param node
      */
-    public void preOrderScan(WireBSTNode node){
+    public static void preOrderScan(WireBSTNode node){
+
 
         if(node == null) return;
 
-        printNode(node);
+        WireBSTNode.printData(node);
 
         preOrderScan(node.getLeft());
 
@@ -405,11 +406,10 @@ public class WireBST{
 
     /**
      * print the wireBST as in order
-     * @param node
      */
     public void inOrderScan(){
 
-        WireBSTNode temp = minWireBST();
+        WireBSTNode temp = this.minWireBST();
 
         for (; temp != null; temp = temp.getRight()){
             printNode(temp);
@@ -421,7 +421,7 @@ public class WireBST{
      * print the wireBST as post order
      * @param node
      */
-    public void postOrderScan(WireBSTNode node){
+    public static void postOrderScan(WireBSTNode node){
 
         if (node == null) return;
 
@@ -429,7 +429,7 @@ public class WireBST{
 
         postOrderScan(node.getRight());
 
-        printNode(node);
+        WireBSTNode.printData(node);
 
     }
 
@@ -466,8 +466,10 @@ public class WireBST{
     public static void print2DNodeWireBST(WireBSTNode head, int space)
     {
         // Base case
-        if (head == null)
+        if (head == null) {
+            System.out.println("tree is empty.");
             return;
+        }
 
         // Increase distance between levels
         space += Constants.COUNT;

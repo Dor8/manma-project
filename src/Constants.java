@@ -5,6 +5,10 @@
 
     public static final String ERROR_INSERT = "cant insert this student. number already exists.";
     public static final String ERROR_NULL = "node not found. this node is null.";
+    public static final String ERROR_REMOVE = "node not found, so it didn't removed.";
+
+
+    public static final String NODE_REMOVED = "node : %s has removed\n";
 
     public static final String PROMPT_USER = "\nplease insert one line that contain the command and parameters.\n for help, type help.";
     public static final String HELP_TEXT =
@@ -26,4 +30,5 @@
             "median - print the median.\n" +
             "file <fileName> - read the input from the specific file.\n"
             ;
- }
+
+}
