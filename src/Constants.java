@@ -1,8 +1,6 @@
 // this file contain all the constants in the package and use as an interface to all the other file in the project.
-
-public class Constants {
-
-    public static final int ZERO = 0;
+ public class Constants {
+     public static final int ZERO = 0;
     public static final int COUNT = 10;
 
     public static final String ERROR_INSERT = "cant insert this student. number already exists.";
@@ -28,5 +26,4 @@ public class Constants {
             "median - print the median.\n" +
             "file <fileName> - read the input from the specific file.\n"
             ;
-
-}
+ }

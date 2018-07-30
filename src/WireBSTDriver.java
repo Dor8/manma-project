@@ -15,13 +15,11 @@ public class WireBSTDriver {
         String secondParam = "";
         String userInput = "" ;
         WireBST tree = new WireBST();
-
-        // get the input from the user for build the tree (maybe in while loop? how the program ends?)
+         // get the input from the user for build the tree (maybe in while loop? how the program ends?)
         while (isRunning){
             promptUser();
             userInput = scanner.nextLine();                // get input from the user: which action to do? + parameters
-
-            String parts []  = userInput.split(" ") ;
+             String parts []  = userInput.split(" ") ;
             command = parts [0];
             if ( parts.length > 1 ) {
                 firstParam = parts[1];
@@ -84,17 +82,13 @@ public class WireBSTDriver {
         System.out.print("Median is: ");
         WireBSTNode.printData(tree.getMedianWireBST());
     }
-
-
-    private static void postorder(WireBST tree) {
+     private static void postorder(WireBST tree) {
         tree.postOrderScan();
     }
-
-    private static void inorder(WireBST tree) {
+     private static void inorder(WireBST tree) {
         tree.inOrderScan();
     }
-
-    private static void preorder(WireBST tree) {
+     private static void preorder(WireBST tree) {
         tree.preOrderScan();
     }
 
@@ -129,22 +123,14 @@ public class WireBSTDriver {
     private static void printHelp() {
         System.out.println(Constants.HELP_TEXT);
     }
-
-    private static void promptUser() {
+     private static void promptUser() {
         System.out.println(Constants.PROMPT_USER);
     }
-
-    private static void insert(WireBST tree, int studentNum, String studentName) {
+     private static void insert(WireBST tree, int studentNum, String studentName) {
         tree.insertWireBSTNode( studentNum, studentName );
     }
-
-
-
-
-    // call when the user want to finish the program
+     // call when the user want to finish the program
     private static void exit(){
         isRunning = false;
     }
-
-
-}
+ }
