@@ -1,25 +1,33 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class WireBSTDriver {
 
     private static boolean isRunning = true;  // flag to indicate from the user when to exit from the program
+    private static Scanner scanner = new Scanner(System.in);   // stream to get input from. start from the keyboard, and the user can change it to a file.
 
     public static void main(String[] args) {
 
         // define all the variables of the main function: wireBST and more
-
-        Scanner scanner = new Scanner(System.in);
 
         String command = "" ;
         String firstParam = "";
         String secondParam = "";
         String userInput = "" ;
         WireBST tree = new WireBST();
-         // get the input from the user for build the tree (maybe in while loop? how the program ends?)
+         // get the input from the user for build the tree, or make other actions.
         while (isRunning){
             promptUser();
-            userInput = scanner.nextLine();                // get input from the user: which action to do? + parameters
-             String parts []  = userInput.split(" ") ;
+            if (scanner.hasNextLine()){
+                userInput = scanner.nextLine();                // get input from the user: which action to do? + parameters
+                System.out.printf("your command is: %s\n", userInput);
+            }
+            else{
+                exit();
+            }
+
+            String parts []  = userInput.split(" ") ;
             command = parts [0];
             if ( parts.length > 1 ) {
                 firstParam = parts[1];
@@ -33,8 +41,8 @@ public class WireBSTDriver {
                 case "help" : printHelp();
                               break;
                 case "exit" : exit();
-                              break;
-                case "insert" : insert( tree , Integer.valueOf( firstParam ) , secondParam );
+                    break;
+                case "insert" : insert( tree , firstParam , secondParam );
                                 break;
                 case "remove" : remove( tree , Integer.valueOf( firstParam ) );
                                 break;
@@ -50,68 +58,84 @@ public class WireBSTDriver {
                     break;
                 case "preorder" : preorder( tree );
                     break;
+                case "pre" : preorder( tree );
+                    break;
                 case "inorder" : inorder( tree );
                     break;
+                case "in" : inorder( tree );
+                    break;
                 case "postorder" : postorder( tree );
+                    break;
+                case "post" : postorder( tree );
                     break;
                 case "median" : median( tree );
                     break;
                 case "gui" : gui( tree );
                     break;
-                case "file" : readFile( firstParam );
+                case "file" : readFile(firstParam);
                     break;
                 default: printHelp();
             }
-
-
         }
-
     }
 
-    private static void readFile(String firstParam) {
-        System.out.printf("Read from file: %s\n" , firstParam);
+    private static void readFile(String fileName) {
+        if (fileName != ""){
+            try{   // try to redirect the input stream to the file specified
+                scanner = new Scanner(new File(fileName));       // redirect the input to come from the file
+                System.out.printf("Read from file: %s\n" , fileName);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                try {
+                    Thread.sleep(100);           // paused the program to 0.1 sec, to allow full print of the system's error messages.
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                System.out.println(Constants.ERROR_READ_FILE);
+            }
+        }
+        else {
+            System.out.println(Constants.ERROR_FILE_NAME_IS_REQUIRED);
+        }
     }
 
 
     private static void gui(WireBST tree) {
         System.out.println("Gui is: ");
-        WireBST.print2DNodeWireBST(tree.getHead() , Constants.ZERO);
+        WireBST.print2DNodeWireBST(tree.getHead() , Constants.ZERO, tree);
     }
 
     private static void median(WireBST tree) {
-        System.out.print("Median is: ");
-        WireBSTNode.printData(tree.getMedianWireBST());
+        WireBSTNode.printData(tree.getMedianWireBST(), tree);
     }
      private static void postorder(WireBST tree) {
-        WireBST.postOrderScan(tree.getHead());
+        tree.postOrderScan(tree.getHead());
     }
      private static void inorder(WireBST tree) {
          tree.inOrderScan();
     }
      private static void preorder(WireBST tree) {
-         WireBST.preOrderScan(tree.getHead());
+         tree.preOrderScan(tree.getHead());
     }
 
     private static void min(WireBST tree) {
-        System.out.print("Min is: ");
-        WireBSTNode.printData(tree.minWireBST());
+        WireBSTNode.printData(tree.minWireBST(), tree);
     }
 
     private static void max(WireBST tree) {
-        System.out.print("Max is: ");
-        WireBSTNode.printData(tree.maxWireBST());
+        WireBSTNode.printData(tree.maxWireBST(), tree);
     }
 
     private static void predecessor(WireBST tree, int studentNum) {
-        WireBSTNode.printData(tree.getPredecessor( tree.searchWireBST( studentNum ) ));
+        WireBSTNode.printData(tree.getPredecessor( tree.searchWireBST( studentNum ) ), tree);
     }
 
     private static void successor(WireBST tree, int studentNum) {
-        WireBSTNode.printData(tree.getSuccessor( tree.searchWireBST( studentNum ) ));
+        WireBSTNode.printData(tree.getSuccessor( tree.searchWireBST( studentNum ) ), tree);
     }
 
     private static void search(WireBST tree, int studentNum) {
-        WireBSTNode.printData(tree.searchWireBST(studentNum));
+        WireBSTNode.printData(tree.searchWireBST(studentNum), tree);
 
     }
 
@@ -131,8 +155,14 @@ public class WireBSTDriver {
      private static void promptUser() {
         System.out.println(Constants.PROMPT_USER);
     }
-     private static void insert(WireBST tree, int studentNum, String studentName) {
-        tree.insertWireBSTNode( studentNum, studentName );
+     private static void insert(WireBST tree, String studentNum, String studentName) {
+        if (studentNum.matches("-?\\d+")) {
+            tree.insertWireBSTNode(Integer.valueOf(studentNum), studentName);
+        }
+        else{
+            System.out.println(Constants.ERROR_FIRST_PARAM_NOT_NUMBER);
+        }
+
     }
      // call when the user want to finish the program
     private static void exit(){

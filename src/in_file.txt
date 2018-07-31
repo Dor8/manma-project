@@ -1,0 +1,87 @@
+help
+gui
+min
+max
+median
+insert
+insert aaa
+insert 10 aaa
+gui
+min
+max
+median
+insert 20 bbb
+gui
+min
+max
+median
+insert 30
+gui
+min
+max
+median
+insert 15
+gui
+min
+max
+median
+insert 17
+gui
+min
+max
+median
+insert 16
+gui
+min
+max
+median
+insert 18
+gui
+min
+max
+median
+insert 5
+gui
+min
+max
+median
+insert 2
+gui
+min
+max
+median
+insert 8
+gui
+min
+max
+median
+insert 1
+gui
+min
+max
+median
+insert 3
+gui
+min
+max
+median
+insert 4
+gui
+min
+max
+median
+insert 7
+gui
+min
+max
+median
+insert 9
+gui
+min
+max
+median
+insert 6
+gui
+post
+in
+pre

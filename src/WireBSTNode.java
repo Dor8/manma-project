@@ -126,7 +126,7 @@ public class WireBSTNode {
      * print the node data in this format : (pred<-)<studentNum>(->suc) . if it median, max or min, print it after the data.
      * @param node the node to print
      */
-    public static void printData(WireBSTNode node) {
+    public static void printData(WireBSTNode node, WireBST tree) {
         String nodeData ;
         if ( node == null ){
             System.out.println(Constants.ERROR_NULL);
@@ -146,16 +146,16 @@ public class WireBSTNode {
             else if(node.getRight() == null){
                 nodeData = nodeData + " (->n)" ;
             }
-            /*nodeData = nodeData + " " + node.getStudentName();
-            if (node.equal(WireBST.getMedianWireBST())){
+
+            if (node.equal(tree.getMedianWireBST())){
                 nodeData = nodeData + " median ";
             }
-            if (node.equal(WireBST.maxWireBST())){
+            if (node.equal(tree.maxWireBST())){
                 nodeData = nodeData + " max ";
             }
-            if (node.equal(WireBST.minWireBST())){
+            if (node.equal(tree.minWireBST())){
                 nodeData = nodeData + " min ";
-            }*/
+            }
             System.out.println( nodeData );
     }
 
