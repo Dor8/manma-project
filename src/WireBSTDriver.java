@@ -26,7 +26,7 @@ public class WireBSTDriver {
                 exit();
             }
 
-            String parts []  = userInput.split(" ") ;
+            String parts []  = userInput.split(" ") ;  // credit for split goes to: https://stackoverflow.com/questions/3481828/how-to-split-a-string-in-java
             command = parts [0];
             if ( parts.length > 1 ) {
                 firstParam = parts[1];
@@ -81,7 +81,7 @@ public class WireBSTDriver {
 
     private static void readFile(String fileName) {
         if (fileName != ""){
-            try {   // try to redirect the input stream to the file specified
+            try {   // try to redirect the input stream to the file specified. credit goes to: https://www.journaldev.com/709/java-read-file-line-by-line#java-read-file-line-by-line-using-scanner
                 scanner = new Scanner(new File(fileName));       // redirect the input to come from the file
                 System.out.printf("Read from file: %s\n" , fileName);
             } catch (FileNotFoundException e) {
