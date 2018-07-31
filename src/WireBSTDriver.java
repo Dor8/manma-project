@@ -1,28 +1,47 @@
+import java.io.*;
 import java.util.*;
- public class WireBSTDriver {
-     private static boolean isRunning = true;  // flag to indicate from the user when to exit from the program
-     public static void main(String[] args) {
-         // define all the variables of the main function: wireBST and more
-         Scanner scanner = new Scanner(System.in);
-         String command;
-        String firstParam;
-        String secondParam;
-        String userInput;
+
+public class WireBSTDriver {
+
+    private static boolean isRunning = true;  // flag to indicate from the user when to exit from the program
+    private static Scanner scanner = new Scanner(System.in);   // stream to get input from. start from the keyboard, and the user can change it to a file.
+
+    public static void main(String[] args) {
+
+        // define all the variables of the main function: wireBST and more
+
+        String userInput = "" ;  // user input is a line build in this format: <command> <firstParam> <secondParam>
+        String command = "" ;
+        String firstParam = "";
+        String secondParam = "";
         WireBST tree = new WireBST();
-         // get the input from the user for build the tree (maybe in while loop? how the program ends?)
+         // get the input from the user for build the tree, or make other actions.
         while (isRunning){
             promptUser();
-            userInput = scanner.nextLine();                // get input from the user: which action to do? + parameters
-             String parts []  = userInput.split(" ") ;
+            if (scanner.hasNextLine()){
+                userInput = scanner.nextLine();                // get input from the user: which action to do? + parameters
+                System.out.printf("your command is: %s\n", userInput);
+            }
+            else{
+                exit();
+            }
+
+            String parts []  = userInput.split(" ") ;
             command = parts [0];
-            firstParam = parts [1];
-            secondParam = parts [2];
-             switch (command){
-                case "help" : helpUser();
+            if ( parts.length > 1 ) {
+                firstParam = parts[1];
+                if (parts.length > 2 ){
+                    secondParam = parts [2];
+                }
+            }
+
+
+            switch (command){
+                case "help" : printHelp();
                               break;
                 case "exit" : exit();
-                              break;
-                case "insert" : insert( tree , Integer.valueOf( firstParam ) , secondParam );
+                    break;
+                case "insert" : insert( tree , firstParam , secondParam );
                                 break;
                 case "remove" : remove( tree , Integer.valueOf( firstParam ) );
                                 break;
@@ -38,62 +57,113 @@ import java.util.*;
                     break;
                 case "preorder" : preorder( tree );
                     break;
+                case "pre" : preorder( tree );
+                    break;
                 case "inorder" : inorder( tree );
                     break;
+                case "in" : inorder( tree );
+                    break;
                 case "postorder" : postorder( tree );
+                    break;
+                case "post" : postorder( tree );
                     break;
                 case "median" : median( tree );
                     break;
                 case "gui" : gui( tree );
                     break;
-                case "file" : readFile( firstParam );
+                case "file" : readFile(firstParam);
                     break;
+                default: printHelp();
             }
-         }
-     }
-     private static void readFile(String firstParam) {
+            command = "" ; firstParam = ""; secondParam = "" ;  // reset all the argument from the user
+        }  //end of while loop
     }
-     private static void gui(WireBST tree) {
-        WireBST.print2DNodeWireBST(tree.getHead() , Constants.ZERO);
+
+    private static void readFile(String fileName) {
+        if (fileName != ""){
+            try {   // try to redirect the input stream to the file specified
+                scanner = new Scanner(new File(fileName));       // redirect the input to come from the file
+                System.out.printf("Read from file: %s\n" , fileName);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                try {
+                    Thread.sleep(100);           // paused the program to 0.1 sec, to allow full print of the system's error messages.
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                System.out.println(Constants.ERROR_READ_FILE);
+            }
+        }
+        else {
+            System.out.println(Constants.ERROR_FILE_NAME_IS_REQUIRED);
+        }
     }
-     private static void median(WireBST tree) {
-        tree.getMedianWireBST().printData();
+
+
+    private static void gui(WireBST tree) {
+        System.out.println("Gui is: ");
+        WireBST.print2DNodeWireBST(tree.getHead() , Constants.ZERO, tree);
+    }
+
+    private static void median(WireBST tree) {
+        WireBSTNode.printData(tree.getMedianWireBST(), tree);
     }
      private static void postorder(WireBST tree) {
-        tree.postOrderScan();
+        tree.postOrderScan(tree.getHead());
     }
      private static void inorder(WireBST tree) {
-        tree.inOrderScan();
+         tree.inOrderScan();
     }
      private static void preorder(WireBST tree) {
-        tree.preOrderScan();
+         tree.preOrderScan(tree.getHead());
     }
-     private static void min(WireBST tree) {
-        tree.minWireBST().printData();
+
+    private static void min(WireBST tree) {
+        WireBSTNode.printData(tree.minWireBST(), tree);
     }
-     private static void max(WireBST tree) {
-        tree.maxWireBST().printData();
+
+    private static void max(WireBST tree) {
+        WireBSTNode.printData(tree.maxWireBST(), tree);
     }
-     private static void predecessor(WireBST tree, int studentNum) {
-        tree.getPredecessor( tree.searchWireBST( studentNum ) ).printData();
+
+    private static void predecessor(WireBST tree, int studentNum) {
+        WireBSTNode.printData(tree.getPredecessor( tree.searchWireBST( studentNum ) ), tree);
     }
-     private static void successor(WireBST tree, int studentNum) {
-        tree.getSuccessor( tree.searchWireBST( studentNum ) ).printData();
+
+    private static void successor(WireBST tree, int studentNum) {
+        WireBSTNode.printData(tree.getSuccessor( tree.searchWireBST( studentNum ) ), tree);
     }
-     private static void search(WireBST tree, int studentNum) {
-        tree.searchWireBST(studentNum).printData();
-     }
-     private static void remove(WireBST tree, int studentNum ) {
-        tree.removeWireBST( studentNum ) ;
-     }
-     private static void helpUser() {
+
+    private static void search(WireBST tree, int studentNum) {
+        WireBSTNode.printData(tree.searchWireBST(studentNum), tree);
+
+    }
+
+    private static void remove(WireBST tree, int studentNum ) {
+        if (tree.removeWireBSTNode( studentNum )) {
+            System.out.printf(Constants.NODE_REMOVED, String.valueOf(studentNum));
+        }
+        else{
+            System.out.println(Constants.ERROR_REMOVE);
+        }
+
+    }
+
+    private static void printHelp() {
         System.out.println(Constants.HELP_TEXT);
     }
      private static void promptUser() {
         System.out.println(Constants.PROMPT_USER);
     }
-     private static void insert(WireBST tree, int studentNum, String studentName) {
-        tree.insertWireBSTNode( studentNum, studentName );
+     private static void insert(WireBST tree, String studentNum, String studentName) {
+        if (studentNum.matches("-?\\d+")) // credit for the regex goes to this answer (stackoverflow):  https://stackoverflow.com/questions/5439529/determine-if-a-string-is-an-integer-in-java
+        {
+            tree.insertWireBSTNode(Integer.valueOf(studentNum), studentName);
+        }
+        else{
+            System.out.println(Constants.ERROR_FIRST_PARAM_NOT_NUMBER);
+        }
+
     }
      // call when the user want to finish the program
     private static void exit(){

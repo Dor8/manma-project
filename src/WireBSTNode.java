@@ -88,6 +88,10 @@ public class WireBSTNode {
         if (this == null || this.getRight() == null) {
             return false;
         }
+        if ( this.getRight().getParent() == null) // case of predecessor of the root.
+        {
+            return false;
+        }
         return (this.getRight().getParent().equal(this) );
     }
 
@@ -98,7 +102,11 @@ public class WireBSTNode {
      */
     public boolean isRealLeft ()
     {
-        if (this == null || this.getLeft() == null){
+        if (this.getLeft() == null){
+            return false;
+        }
+        if ( this.getLeft().getParent() == null ) // case of successor of the root.
+        {
             return false;
         }
         return ( this.getLeft().getParent().equal(this) ) ;
@@ -116,7 +124,42 @@ public class WireBSTNode {
     }
 
 
-    public void printData() {
-        
+    /**
+     * print the node data in this format : (pred<-)<studentNum>(->suc) . if it median, max or min, print it after the data.
+     * @param node the node to print
+     */
+    public static void printData(WireBSTNode node, WireBST tree) {
+        String nodeData ;
+        if ( node == null ){
+            System.out.println(Constants.ERROR_NULL);
+        }
+        else{
+            nodeData = String.valueOf(node.getStudentNum());
+            if ( node.getLeft() != null){
+                nodeData = "(" + String.valueOf(node.getLeft().getStudentNum()) + "<-) " + nodeData;
+            }
+            else if(node.getLeft() == null){
+                nodeData = "(n<-) " + nodeData;
+            }
+
+            if (  node.getRight() != null ){
+                nodeData = nodeData + " (->" + String.valueOf(node.getRight().getStudentNum()) + ")" ;
+            }
+            else if(node.getRight() == null){
+                nodeData = nodeData + " (->n)" ;
+            }
+
+            if (node.equal(tree.getMedianWireBST())){
+                nodeData = nodeData + " median ";
+            }
+            if (node.equal(tree.maxWireBST())){
+                nodeData = nodeData + " max ";
+            }
+            if (node.equal(tree.minWireBST())){
+                nodeData = nodeData + " min ";
+            }
+            System.out.println( nodeData );
+    }
+
     }
 }

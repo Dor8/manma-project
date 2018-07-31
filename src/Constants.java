@@ -2,11 +2,20 @@
  public class Constants {
      public static final int ZERO = 0;
     public static final int COUNT = 10;
-     public static final String ERROR_INSERT = "cant insert this student. number already exists";
-     public static final String PROMPT_USER = "please insert one line that contain the command and parameters.\n for help, type help.";
+
+    public static final String ERROR_INSERT = "cant insert this student. number already exists.";
+    public static final String ERROR_NULL = "node not found. this node is null.";
+    public static final String ERROR_REMOVE = "node not found, so it didn't removed.";
+    public static final String ERROR_FILE_NAME_IS_REQUIRED = "file name is required";
+    public static final String ERROR_READ_FILE = "cant read the file. make sure you insert the full path of the file.";
+    public static final String ERROR_FIRST_PARAM_NOT_NUMBER = "the index of the node to insert must be integer." ;
+
+    public static final String NODE_REMOVED = "node : %s has removed\n";
+
+    public static final String PROMPT_USER = "\nplease insert one line that contain the command and parameters. for help, type help.\n>>>";
     public static final String HELP_TEXT =
             "insert a line that contain the command then the parameters. \n" +
-            "the methods are: " +
+            "the methods are:\n" +
             "help - list all the possible commands."+
             "exit - exit from the program.\n" +
             "insert <studentNum> <studentName> - insert the student.\n" +
@@ -16,11 +25,12 @@
             "predecessor <studentNum> - print the successor.\n" +
             "max - print the max student.\n" +
             "min - print the max student.\n" +
-            "preorder - print the tree as pre order.\n" +
-            "inorder - print the tree as in order.\n" +
-            "postorder - print the tree as post order.\n" +
+            "preorder || pre - print the tree as pre order.\n" +
+            "inorder || in - print the tree as in order.\n" +
+            "postorder || post - print the tree as post order.\n" +
             "gui - print the tree as two dimension tree.\n" +
             "median - print the median.\n" +
-            "file <fileName> - read the input from the specific file.\n"
+            "file <fileName> - read the input from the specific file. after reading the file, the program will finish.\n"
             ;
- }
+
+}

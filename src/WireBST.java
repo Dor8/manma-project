@@ -302,7 +302,6 @@ public class WireBST{
         }
     }
 
-
     /**
      *
      * @param studentNum the key to look for in the tree.
@@ -393,26 +392,29 @@ public class WireBST{
      */
     public void preOrderScan(WireBSTNode node){
 
+
         if(node == null) return;
 
-        printNode(node);
+        WireBSTNode.printData(node, this);
 
-        preOrderScan(node.getLeft());
-
-        preOrderScan(node.getRight());
+        if (node.isRealLeft()) {
+            preOrderScan(node.getLeft());
+        }
+        if (node.isRealRight()){
+            preOrderScan(node.getRight());
+        }
 
     }
 
     /**
      * print the wireBST as in order
-     * @param node
      */
     public void inOrderScan(){
 
-        WireBSTNode temp = minWireBST();
+        WireBSTNode temp = this.minWireBST();
 
         for (; temp != null; temp = temp.getRight()){
-            printNode(temp);
+            WireBSTNode.printData(temp, this);
         }
 
     }
@@ -425,22 +427,17 @@ public class WireBST{
 
         if (node == null) return;
 
-        postOrderScan(node.getLeft());
+        if (node.isRealLeft()){
+            postOrderScan(node.getLeft());
+        }
+        if (node.isRealRight()){
+            postOrderScan(node.getRight());
+        }
 
-        postOrderScan(node.getRight());
-
-        printNode(node);
+        WireBSTNode.printData(node, this);
 
     }
 
-    /**
-     *
-     * @param node
-     */
-    private void printNode(WireBSTNode node){
-        System.out.println(node.getStudentNum() + " ");
-        System.out.println(node.getStudentName() + " ");
-    }
 
     /**
      *
@@ -463,39 +460,32 @@ public class WireBST{
     // Function to print binary tree in 2D
     // It does reverse inorder traversal
     // i translate it from C. cradit to: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
-    public static void print2DNodeWireBST(WireBSTNode head, int space)
+    public static void print2DNodeWireBST(WireBSTNode head, int space, WireBST tree)
     {
         // Base case
-        if (head == null)
+        if (head == null) {
+            System.out.println("tree is empty.");
             return;
+        }
 
         // Increase distance between levels
         space += Constants.COUNT;
 
         // Process right child first
-        print2DNodeWireBST(head.getRight() , space);
+        if (head.isRealRight()){
+            print2DNodeWireBST(head.getRight() , space, tree);
+        }
 
         // Print current node after space count
         System.out.println();    // go one line down
         for (int i = Constants.COUNT ; i < space; i++)
-            System.out.println(" ");
-        System.out.println(Integer.valueOf(head.getStudentNum()) + head.getStudentName() + "\n" );
+            System.out.print(" ");
+        WireBSTNode.printData(head ,tree);
 
         // Process left child
-        print2DNodeWireBST(head.getLeft(), space);
+        if (head.isRealLeft()){
+            print2DNodeWireBST(head.getLeft(), space, tree);
+        }
     }
-
-
-    /*  this is for the gui, if will be implement.
-    * public void print2DWireBST(){
-    *     WireBSTNode.print2DNodeWireBST(getHead(), 0 );
-    * }
-    *
-    * public void sayHello(ActionEvent actionEvent) {
-    *     helloWorld.setText("Hello World!");
-    * }
-    *
-    *
-    * */
 
 }   // end of WireBST class
