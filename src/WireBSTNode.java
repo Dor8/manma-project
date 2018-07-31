@@ -88,7 +88,8 @@ public class WireBSTNode {
         if (this == null || this.getRight() == null) {
             return false;
         }
-        if ( this.getRight().getParent() == null) {
+        if ( this.getRight().getParent() == null) // case of predecessor of the root.
+        {
             return false;
         }
         return (this.getRight().getParent().equal(this) );
@@ -104,7 +105,8 @@ public class WireBSTNode {
         if (this.getLeft() == null){
             return false;
         }
-        if ( this.getLeft().getParent() == null ) {
+        if ( this.getLeft().getParent() == null ) // case of successor of the root.
+        {
             return false;
         }
         return ( this.getLeft().getParent().equal(this) ) ;

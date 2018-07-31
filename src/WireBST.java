@@ -109,7 +109,6 @@ public class WireBST{
         newNode.setLeft(currentNode); // make the predecessor of the new node to be her parent, because it is the predecessor (only in insert to left!).
     }
 
-    // FIXME this make a problem of null exception
     /**
      * update the median after insert a node
      * @param newNode the node that inserted
@@ -482,25 +481,11 @@ public class WireBST{
         for (int i = Constants.COUNT ; i < space; i++)
             System.out.print(" ");
         WireBSTNode.printData(head ,tree);
-        /*System.out.println(Integer.valueOf(head.getStudentNum()) + head.getStudentName() + "\n" );*/
 
         // Process left child
         if (head.isRealLeft()){
             print2DNodeWireBST(head.getLeft(), space, tree);
         }
     }
-
-
-    /*  this is for the gui, if will be implement.
-    * public void print2DWireBST(){
-    *     WireBSTNode.print2DNodeWireBST(getHead(), 0 );
-    * }
-    *
-    * public void sayHello(ActionEvent actionEvent) {
-    *     helloWorld.setText("Hello World!");
-    * }
-    *
-    *
-    * */
 
 }   // end of WireBST class

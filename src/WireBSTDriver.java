@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class WireBSTDriver {
@@ -11,10 +10,10 @@ public class WireBSTDriver {
 
         // define all the variables of the main function: wireBST and more
 
+        String userInput = "" ;  // user input is a line build in this format: <command> <firstParam> <secondParam>
         String command = "" ;
         String firstParam = "";
         String secondParam = "";
-        String userInput = "" ;
         WireBST tree = new WireBST();
          // get the input from the user for build the tree, or make other actions.
         while (isRunning){
@@ -76,12 +75,13 @@ public class WireBSTDriver {
                     break;
                 default: printHelp();
             }
-        }
+            command = "" ; firstParam = ""; secondParam = "" ;  // reset all the argument from the user
+        }  //end of while loop
     }
 
     private static void readFile(String fileName) {
         if (fileName != ""){
-            try{   // try to redirect the input stream to the file specified
+            try {   // try to redirect the input stream to the file specified
                 scanner = new Scanner(new File(fileName));       // redirect the input to come from the file
                 System.out.printf("Read from file: %s\n" , fileName);
             } catch (FileNotFoundException e) {
@@ -156,7 +156,8 @@ public class WireBSTDriver {
         System.out.println(Constants.PROMPT_USER);
     }
      private static void insert(WireBST tree, String studentNum, String studentName) {
-        if (studentNum.matches("-?\\d+")) {
+        if (studentNum.matches("-?\\d+")) // credit for the regex goes to this answer (stackoverflow):  https://stackoverflow.com/questions/5439529/determine-if-a-string-is-an-integer-in-java
+        {
             tree.insertWireBSTNode(Integer.valueOf(studentNum), studentName);
         }
         else{
