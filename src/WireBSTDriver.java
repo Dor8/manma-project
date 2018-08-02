@@ -76,8 +76,8 @@ public class WireBSTDriver {
                 default: printHelp();
             }
             command = "" ; firstParam = ""; secondParam = "" ;  // reset all the argument from the user
-        }  //end of while loop
-    }
+        }  // end of while loop
+    }   // end of main
 
     private static void readFile(String fileName) {
         if (fileName != ""){
