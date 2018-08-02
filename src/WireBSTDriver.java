@@ -69,6 +69,8 @@ public class WireBSTDriver {
                     break;
                 case "median" : median( tree );
                     break;
+                case "count" : count( tree );
+                    break;
                 case "gui" : gui( tree );
                     break;
                 case "file" : readFile(firstParam);
@@ -78,6 +80,10 @@ public class WireBSTDriver {
             command = "" ; firstParam = ""; secondParam = "" ;  // reset all the argument from the user
         }  // end of while loop
     }   // end of main
+
+    private static void count(WireBST tree) {
+        System.out.println(Constants.TREE_COUNT + String.valueOf(tree.countNodes(tree.getHead())));
+    }
 
     private static void readFile(String fileName) {
         if (fileName != ""){
@@ -103,6 +109,7 @@ public class WireBSTDriver {
     private static void gui(WireBST tree) {
         System.out.println("Gui is: ");
         WireBST.print2DNodeWireBST(tree.getHead() , Constants.ZERO, tree);
+        count(tree);
     }
 
     private static void median(WireBST tree) {

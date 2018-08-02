@@ -85,7 +85,7 @@ public class WireBSTNode {
      */
     public boolean isRealRight ()
     {
-        if (this == null || this.getRight() == null) {
+        if (this.getRight() == null) {
             return false;
         }
         if ( this.getRight().getParent() == null) // case of predecessor of the root.

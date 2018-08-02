@@ -38,6 +38,36 @@ public class WireBST{
 
 
     /**
+     * count the number of nodes in the tree.
+     * complexity: its O(n), because its recursivly goes to all the nodes in the tree, and visit each one of them one time.
+     * @param node is the head of the sub tree that start from it.
+     * @return the number of nodes in the tree.
+     */
+    public int countNodes(WireBSTNode node) {
+        int count = 0;
+        if (node == null)  // empty tree
+        {
+            return 0;
+        }
+        count++;  // count the current node
+        if ( ( ! node.isRealLeft()) && ( ! node.isRealRight()))  // leaf
+        {
+            return count ;
+        }
+
+        if ( node.isRealLeft())  // count all the nodes in the left sub tree
+        {
+            count += countNodes(node.getLeft());
+        }
+        if ( node.isRealRight())  // count all the nodes in the right sub tree
+        {
+            count += countNodes(node.getRight());
+        }
+        return count;
+    }
+
+
+    /**
      * insert of the node to the WireBST
      * @param studentNum the student number
      * @param studentName the student name
@@ -55,7 +85,8 @@ public class WireBST{
             return true;
         }
 
-        if( searchWireBST(newNode.getStudentNum()) != null ){
+        if( searchWireBST(newNode.getStudentNum()) != null )  // case that this node is already in the tree (cant override)
+        {
             System.out.println( Constants.ERROR_INSERT);
             return false;
         }
@@ -412,8 +443,13 @@ public class WireBST{
     public void inOrderScan(){
 
         WireBSTNode temp = this.minWireBST();
+        int flag = temp.getStudentNum();
 
         for (; temp != null; temp = temp.getRight()){
+            while ( temp.isRealLeft() && temp.getLeft().getStudentNum() > flag ){
+                temp = temp.getLeft();
+            }
+            flag = temp.getStudentNum();
             WireBSTNode.printData(temp, this);
         }
 
