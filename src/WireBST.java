@@ -248,8 +248,6 @@ public class WireBST{
      */
     private void removeNodeWithOnlyRightSon(WireBSTNode node){
 
-        node.getRight().setParent(node.getParent());
-
         if (node.getParent() == null){                                  //in case node is root
             this.setHead(node.getRight());
             getSuccessor(node).setLeft(node.getLeft());
@@ -259,11 +257,11 @@ public class WireBST{
             node.getParent().setRight(node.getRight());
             getSuccessor(node).setLeft(node.getParent());
         }
-
         else {                                                         //in case node is left son
             node.getParent().setLeft(node.getRight());
             getSuccessor(node).setLeft(getPredecessor(node));
         }
+        node.getRight().setParent(node.getParent());
     }
 
 
@@ -276,22 +274,19 @@ public class WireBST{
 
         if (node.getParent() == null){
             this.setHead(node.getLeft());
-            node.getLeft().setParent(node.getParent());
             getPredecessor(node).setRight(node.getRight());
         }
 
         else if (node.equal(node.getParent().getRight())){
-            node.getLeft().setParent(node.getParent());
             node.getParent().setRight(node.getLeft());
             getPredecessor(node).setRight(getSuccessor(node));
         }
 
         else {
             node.getParent().setLeft(node.getLeft());
-            node.getLeft().setParent(node.getParent());
             getPredecessor(node).setRight(getSuccessor(node));
         }
-
+        node.getLeft().setParent(node.getParent());
     }
 
     /**
@@ -365,7 +360,7 @@ public class WireBST{
      * @return the successor of node.
      */
     public WireBSTNode getSuccessor(WireBSTNode node){
-        if ( node == null )
+        if ( node == null || node.getRight() == null)
             return null;
         if ( ! node.isRealRight() )     // if the right son isnt real, so he is the successor!
             return node.getRight();
@@ -381,7 +376,7 @@ public class WireBST{
      * @return the predecessor of node.
      */
     public WireBSTNode getPredecessor(WireBSTNode node){
-        if ( node == null )
+        if ( node == null || node.getLeft() == null )
             return null;
         if ( ! node.isRealLeft() )     // if the left son isnt real, so he is the successor!
             return node.getLeft();

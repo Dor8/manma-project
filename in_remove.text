@@ -46,6 +46,9 @@ gui
 in
 gui
 post
+predecessor 6
+successor 6
+gui
 remove 6
 gui
 remove 2
