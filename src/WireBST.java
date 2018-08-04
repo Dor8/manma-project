@@ -252,11 +252,6 @@ public class WireBST{
      */
     private void removeNodeWithOnlyRightSon(WireBSTNode node){
 
-        print2DNodeWireBST(this.getHead(), 0, this);
-
-        WireBSTDriver.successor(this, node.getStudentNum());
-        WireBSTDriver.predecessor (this, node.getStudentNum());
-
         if (node.getParent() == null){                                  //in case node is root
             System.out.println("in case node is root");
             this.setHead(node.getRight());
@@ -269,6 +264,7 @@ public class WireBST{
             getSuccessor(node).setLeft(node.getParent());
         }
         else {                                                         //in case node is left son
+            System.out.println("case node is left son");
             node.getParent().setLeft(node.getRight());
             getSuccessor(node).setLeft(getPredecessor(node));
         }
@@ -284,16 +280,19 @@ public class WireBST{
     private void removeNodeWithOnlyLeftSon(WireBSTNode node){
 
         if (node.getParent() == null){
+            System.out.println("in case node is root");
             this.setHead(node.getLeft());
             getPredecessor(node).setRight(node.getRight());
         }
 
         else if (node.equal(node.getParent().getRight())){
+            System.out.println("case node is right son");
             node.getParent().setRight(node.getLeft());
             getPredecessor(node).setRight(getSuccessor(node));
         }
 
         else {
+            System.out.println("case node is left son");
             node.getParent().setLeft(node.getLeft());
             getPredecessor(node).setRight(getSuccessor(node));
         }
