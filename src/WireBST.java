@@ -182,19 +182,15 @@ public class WireBST{
     public void removeWireBSTNode(WireBSTNode node){
 
         if ( ! node.isRealLeft() && ! node.isRealRight() ){        //** in case of removing deep leaf
-            System.out.println("remove deep leef");
             removeDeepLeaf(node);
         }
         else if ((node.isRealRight()) && (!node.isRealLeft())){    //** in case of removing node who has only right son
-            System.out.println("removing node who has only right son");
             removeNodeWithOnlyRightSon(node);
         }
         else if ((!node.isRealRight()) && (node.isRealLeft())){    //** in case of removing node who has only left son
-            System.out.println("removing node who has only left son");
             removeNodeWithOnlyLeftSon(node);
         }
         else {                                                     //** in case of removing node who has two sons
-            System.out.println("removing node who two sons");
             removeNodeWithTwoSons(node);
         }
     }
@@ -253,18 +249,15 @@ public class WireBST{
     private void removeNodeWithOnlyRightSon(WireBSTNode node){
 
         if (node.getParent() == null){                                  //in case node is root
-            System.out.println("in case node is root");
             this.setHead(node.getRight());
             getSuccessor(node).setLeft(node.getLeft());
         }
 
         else if  (node.equal(node.getParent().getRight())){            //in case node is right son
-            System.out.println("case node is right son");
             node.getParent().setRight(node.getRight());
             getSuccessor(node).setLeft(node.getParent());
         }
         else {                                                         //in case node is left son
-            System.out.println("case node is left son");
             node.getParent().setLeft(node.getRight());
             getSuccessor(node).setLeft(getPredecessor(node));
         }
@@ -280,19 +273,16 @@ public class WireBST{
     private void removeNodeWithOnlyLeftSon(WireBSTNode node){
 
         if (node.getParent() == null){
-            System.out.println("in case node is root");
             this.setHead(node.getLeft());
             getPredecessor(node).setRight(node.getRight());
         }
 
         else if (node.equal(node.getParent().getRight())){
-            System.out.println("case node is right son");
             node.getParent().setRight(node.getLeft());
             getPredecessor(node).setRight(getSuccessor(node));
         }
 
         else {
-            System.out.println("case node is left son");
             node.getParent().setLeft(node.getLeft());
             getPredecessor(node).setRight(getSuccessor(node));
         }
