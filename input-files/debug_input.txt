@@ -1,16 +1,9 @@
-insert 77
-insert 99
-insert 23
-insert 50
 insert 30
 insert 40
-in
+insert 20
 gui
-successor 23
-predecessor 23
-successor 50
-predecessor 50
-remove 23
+in
+remove 30
 gui
 successor 50
 predecessor 50

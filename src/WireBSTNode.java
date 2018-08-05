@@ -120,6 +120,9 @@ public class WireBSTNode {
      * @return true if node is equal to this node.
      */
     public boolean equal(WireBSTNode node){
+        if ( node == null){
+            return false;
+        }
         return ( this.getStudentNum() == node.getStudentNum() ) ;
     }
 

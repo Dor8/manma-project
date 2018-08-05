@@ -223,23 +223,16 @@ public class WireBST{
         if (this.getNodeCounter() == 1) {
             this.setMedian(null);
         }
-
-        if (this.getNodeCounter() % 2 == 0) {
+        else if (this.getNodeCounter() % 2 == 0) {
 
             if (node.getStudentNum() <= this.getMedianWireBST().getStudentNum())
                 this.setMedian(getSuccessor(this.getMedianWireBST()));
-
         }
-
         else  {
-
             if (node.getStudentNum() >= this.getMedianWireBST().getStudentNum())
             this.setMedian(getPredecessor(this.getMedianWireBST()));
-
         }
-
         this._nodeCounter --;
-
     }
 
     /**
