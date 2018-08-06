@@ -1,9 +1,9 @@
 insert 30
 insert 40
 insert 20
+insert 35
+insert 37
 gui
-in
 remove 30
 gui
-successor 50
-predecessor 50
+search 37

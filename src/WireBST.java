@@ -290,6 +290,8 @@ public class WireBST{
 
         WireBSTNode temp = getSuccessor(node);
 
+        getPredecessor(node).setRight(temp);
+
         if (node.getParent() == null ){                                 //in case node is root
             this.setHead(temp);
         }
@@ -302,18 +304,23 @@ public class WireBST{
             node.getParent().setLeft(temp);
         }
 
-        if (node.getRight() == temp){
-            ;
-        }
-        else {
+        if ( ! node.getRight().equal(temp) ) {
+            System.out.println("if ( ! node.getRight().equal(temp) )");
+            if ( temp.getRight() != null ){
+                System.out.println("if ( temp.getRight() != null )");
+                WireBSTNode.printData(temp.getParent(),this);
+                WireBSTNode.printData(temp.getParent().getLeft(),this);
+                temp.getParent().setLeft(temp.getRight());
+                WireBSTNode.printData(temp.getParent().getLeft(),this);
+            }
             temp.setRight(node.getRight());
+
         }
 
+        temp.setParent(node.getParent());
         temp.setLeft(node.getLeft());
         node.getLeft().setParent(temp);
         node.getRight().setParent(temp);
-        getPredecessor(node).setRight(temp);
-        temp.setParent(node.getParent());
     }
 
     /**
