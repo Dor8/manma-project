@@ -292,33 +292,28 @@ public class WireBST{
 
         if (node.getParent() == null ){                                 //in case node is root
             this.setHead(temp);
-            temp.setParent(node.getParent());
-            temp.setRight(node.getRight());
-            node.getRight().setParent(temp);
-            temp.setLeft(node.getLeft());
-            node.getLeft().setParent(temp);
-            getPredecessor(node).setRight(temp);
         }
 
         else if (node.equal(node.getParent().getRight())){              //in case node is right son
             node.getParent().setRight(temp);
-            temp.setParent(node.getParent());
-            temp.setRight(node.getRight());
-            node.getRight().setParent(temp);
-            temp.setLeft(node.getLeft());
-            node.getLeft().setParent(temp);
-            getPredecessor(node).setRight(temp);
         }
 
         else {                                                         //in case node is a left son
             node.getParent().setLeft(temp);
-            temp.setParent(node.getParent());
-            temp.setRight(node.getRight());
-            node.getRight().setParent(temp);
-            temp.setLeft(node.getLeft());
-            node.getLeft().setParent(temp);
-            getPredecessor(node).setRight(temp);
         }
+
+        if (node.getRight() == temp){
+            ;
+        }
+        else {
+            temp.setRight(node.getRight());
+        }
+
+        temp.setLeft(node.getLeft());
+        node.getLeft().setParent(temp);
+        node.getRight().setParent(temp);
+        getPredecessor(node).setRight(temp);
+        temp.setParent(node.getParent());
     }
 
     /**
