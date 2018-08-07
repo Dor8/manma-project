@@ -43,13 +43,13 @@ public class WireBSTDriver {
                     break;
                 case "insert" : insert( tree , firstParam , secondParam );
                                 break;
-                case "remove" : remove( tree , Integer.valueOf( firstParam ) );
+                case "remove" : remove( tree , firstParam );
                                 break;
-                case "search" : search( tree , Integer.valueOf( firstParam ) );
+                case "search" : search( tree , firstParam );
                     break;
-                case "successor" : successor( tree , Integer.valueOf( firstParam ) );
+                case "successor" : successor( tree , firstParam );
                     break;
-                case "predecessor" : predecessor( tree , Integer.valueOf( firstParam ) );
+                case "predecessor" : predecessor( tree , firstParam );
                     break;
                 case "max" : max( tree );
                     break;
@@ -133,27 +133,49 @@ public class WireBSTDriver {
         WireBSTNode.printData(tree.maxWireBST(), tree);
     }
 
-    private static void predecessor(WireBST tree, int studentNum) {
-        WireBSTNode.printData(tree.getPredecessor( tree.searchWireBST( studentNum ) ), tree);
-    }
-
-    private static void successor(WireBST tree, int studentNum) {
-        WireBSTNode.printData(tree.getSuccessor( tree.searchWireBST( studentNum ) ), tree);
-    }
-
-    private static void search(WireBST tree, int studentNum) {
-        WireBSTNode.printData(tree.searchWireBST(studentNum), tree);
-
-    }
-
-    private static void remove(WireBST tree, int studentNum ) {
-        if (tree.removeWireBSTNode( studentNum )) {
-            System.out.printf(Constants.NODE_REMOVED, String.valueOf(studentNum));
+    private static void predecessor(WireBST tree, String studentNum) {
+        if (studentNum.matches("-?\\d+")) // credit for the regex goes to this answer (stackoverflow):  https://stackoverflow.com/questions/5439529/determine-if-a-string-is-an-integer-in-java
+        {
+            WireBSTNode.printData(tree.getPredecessor(tree.searchWireBST(Integer.valueOf(studentNum))), tree);
         }
         else{
-            System.out.println(Constants.ERROR_REMOVE);
+            System.out.println(Constants.ERROR_FIRST_PARAM_NOT_NUMBER);
         }
+    }
 
+    private static void successor(WireBST tree, String studentNum) {
+        if (studentNum.matches("-?\\d+")) // credit for the regex goes to this answer (stackoverflow):  https://stackoverflow.com/questions/5439529/determine-if-a-string-is-an-integer-in-java
+        {
+            WireBSTNode.printData(tree.getSuccessor(tree.searchWireBST(Integer.valueOf(studentNum))), tree);
+        }
+        else{
+            System.out.println(Constants.ERROR_FIRST_PARAM_NOT_NUMBER);
+        }
+    }
+
+    private static void search(WireBST tree, String studentNum) {
+        if (studentNum.matches("-?\\d+")) // credit for the regex goes to this answer (stackoverflow):  https://stackoverflow.com/questions/5439529/determine-if-a-string-is-an-integer-in-java
+        {
+            WireBSTNode.printData(tree.searchWireBST(Integer.valueOf(studentNum)), tree);
+        }
+        else{
+            System.out.println(Constants.ERROR_FIRST_PARAM_NOT_NUMBER);
+        }
+    }
+
+    private static void remove(WireBST tree, String studentNum ) {
+        if (studentNum.matches("-?\\d+")) // credit for the regex goes to this answer (stackoverflow):  https://stackoverflow.com/questions/5439529/determine-if-a-string-is-an-integer-in-java
+        {
+            if (tree.removeWireBSTNode( Integer.valueOf(studentNum) )) {
+                System.out.printf(Constants.NODE_REMOVED, String.valueOf(studentNum));
+            }
+            else{
+                System.out.println(Constants.ERROR_REMOVE);
+            }
+        }
+        else{
+            System.out.println(Constants.ERROR_FIRST_PARAM_NOT_NUMBER);
+        }
     }
 
     private static void printHelp() {

@@ -289,29 +289,36 @@ public class WireBST{
     private void removeNodeWithTwoSons(WireBSTNode node){
 
         WireBSTNode temp = getSuccessor(node);
+        node.copyData(temp);
+        removeWireBSTNode(temp); // this will call
+    /*
+        // replace all the pointers to node to point to temp (successor(node))
+        // replace all the pointers of temp (successor(node)) to point the right, left and parent of node
+        // also handle case of root
+
+        // the successor of the node can be his left son (then this son have only right sons)
+        // or it can be a left son, with or without a right sub tree.
 
         getPredecessor(node).setRight(temp);
 
+        // set the parent of node to point to temp
         if (node.getParent() == null ){                                 //in case node is root
             this.setHead(temp);
         }
-
         else if (node.equal(node.getParent().getRight())){              //in case node is right son
             node.getParent().setRight(temp);
         }
-
         else {                                                         //in case node is a left son
             node.getParent().setLeft(temp);
         }
 
-        if ( ! node.getRight().equal(temp) ) {
-            System.out.println("if ( ! node.getRight().equal(temp) )");
-            if ( temp.getRight() != null ){
-                System.out.println("if ( temp.getRight() != null )");
-                WireBSTNode.printData(temp.getParent(),this);
-                WireBSTNode.printData(temp.getParent().getLeft(),this);
+        // set the right son of temp to point to the right son of node
+        if ( ! node.getRight().equal(temp) ) // in case temp is not the right son of node
+        {
+            if ( temp.isRealRight() )  // in case temp have a right sub-tree
+            {
                 temp.getParent().setLeft(temp.getRight());
-                WireBSTNode.printData(temp.getParent().getLeft(),this);
+                temp.getRight().setParent(temp.getParent());
             }
             temp.setRight(node.getRight());
 
@@ -321,6 +328,7 @@ public class WireBST{
         temp.setLeft(node.getLeft());
         node.getLeft().setParent(temp);
         node.getRight().setParent(temp);
+    */
     }
 
     /**

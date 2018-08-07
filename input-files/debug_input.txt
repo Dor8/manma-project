@@ -1,5 +1,15 @@
 insert 30
+insert 60
+insert 65
+insert 50
+insert 55
 insert 40
+insert 43
+insert 35
+insert -5
+insert 42
+insert 31
+insert 32
 insert 20
 insert 35
 insert 37
