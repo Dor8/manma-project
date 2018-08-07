@@ -8,7 +8,7 @@
     public static final String ERROR_REMOVE = "node not found, so it didn't removed.";
     public static final String ERROR_FILE_NAME_IS_REQUIRED = "file name is required";
     public static final String ERROR_READ_FILE = "cant read the file. make sure you insert the full path of the file.";
-    public static final String ERROR_FIRST_PARAM_NOT_NUMBER = "the index of the node to insert must be integer." ;
+    public static final String ERROR_FIRST_PARAM_NOT_NUMBER = "the index of the node must be integer." ;
     public static final String TREE_COUNT = "the number of nodes in the tree is: ";
 
     public static final String NODE_REMOVED = "node : %s has removed\n";

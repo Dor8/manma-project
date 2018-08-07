@@ -165,4 +165,9 @@ public class WireBSTNode {
     }
 
     }
+
+    public void copyData(WireBSTNode toCopyFrom) {
+        this.setStudentNum(toCopyFrom.getStudentNum());
+        this.setStudentName(toCopyFrom.getStudentName());
+    }
 }
