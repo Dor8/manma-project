@@ -82,7 +82,7 @@ public class WireBSTDriver {
     }   // end of main
 
     private static void count(WireBST tree) {
-        System.out.println(Constants.TREE_COUNT + String.valueOf(tree.countNodes(tree.getHead())));
+        System.out.println(Constants.TREE_COUNT + String.valueOf(tree.getNodeCounter()));
     }
 
     private static void readFile(String fileName) {
@@ -108,7 +108,7 @@ public class WireBSTDriver {
 
     private static void gui(WireBST tree) {
         System.out.println("Gui is: ");
-        WireBST.print2DNodeWireBST(tree.getHead() , Constants.ZERO, tree);
+        tree.print2DNodeWireBST(tree.getHead() , Constants.ZERO);
         count(tree);
     }
 
