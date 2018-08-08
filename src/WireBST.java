@@ -142,7 +142,7 @@ public class WireBST{
      * remove the student that his number is the given parameter
      * Complexity: O(lg(n))- for searching the node we wish to remove by call search function. Up next overloading the remove function
      * will not change the function's complexity.
-     * use those functions: { searchWireBST() , updateMedianRemove() } = O(lg(n))
+     * use those functions: { searchWireBST() , updateMedianRemove() , removeWireBSTNode()[overloading!] } = O(lg(n))
      * @param studentNum , the key for node to remove
      * @return true if the node was removed, else false
      */
@@ -183,7 +183,8 @@ public class WireBST{
 
     /**
      * removing a deep leaf. used by the removeWiredBSTNode function
-     * Complexity: O(1) - constant number of actions.
+     * Complexity: O(lg(n)) - constant number of actions + getSuccessor + getPredecessor
+     * use those functions: { getSuccessor(), getPredecessor() } = O(lg(n))
      * @param node the node we wish to remove
      */
     private void removeDeepLeaf(WireBSTNode node){
@@ -209,7 +210,7 @@ public class WireBST{
      */
     private void updateMedianRemove(WireBSTNode node){
 
-        if (this.getHead().getLeft() == null && this.getHead().getRight() == null) {
+        if (this.getNodeCounter() == 1) {
             this.setMedian(null);
         }
         else if (this.getNodeCounter() % 2 == 0) {
@@ -277,8 +278,8 @@ public class WireBST{
 
     /**
      * remove node who has two sons
-     * Complexity: O(lg(n)) - constant number of actions + getSuccessor()
-     * use those functions: { getSuccessor() , removeWireBSTNode } = O(lg(n))
+     * Complexity: O(lg(n)) - constant number of actions + getSuccessor() + removeWireBSTNode() [recursive only once!]
+     * use those functions: { getSuccessor() , removeWireBSTNode() } = O(lg(n))
      * @param node with two sons
      */
     private void removeNodeWithTwoSons(WireBSTNode node){
@@ -450,8 +451,6 @@ public class WireBST{
     }
 
 
-
-    //
     /**
      * Function to print binary tree in 2D
      * It does reverse inorder traversal
