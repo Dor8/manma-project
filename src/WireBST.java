@@ -27,50 +27,27 @@ public class WireBST{
         return _head;
     }
 
-    public void setHead(WireBSTNode newHead){
-        _head = newHead ;
-    }
+    public void setHead(WireBSTNode newHead){ _head = newHead ; }
 
-    private int getNodeCounter(){
-        return this._nodeCounter;
-
-    }
-
+    public int getNodeCounter(){ return this._nodeCounter; }
 
     /**
-     * count the number of nodes in the tree.
-     * Complexity: O(n). Because it's recursively goes to all the nodes in the tree, and visit each one of them one time.
-     * @param node is the head of the sub tree that start from it.
-     * @return the number of nodes in the tree.
+     * Complexity: O(1)
+     * @return the median WireBST
      */
-    public int countNodes(WireBSTNode node) {
-        int count = 0;
-        if (node == null)  // empty tree
-        {
-            return 0;
-        }
-        count++;  // count the current node
-        if ( ( ! node.isRealLeft()) && ( ! node.isRealRight()))  // leaf
-        {
-            return count ;
-        }
+    public WireBSTNode getMedianWireBST() { return _median; }
 
-        if ( node.isRealLeft())  // count all the nodes in the left sub tree
-        {
-            count += countNodes(node.getLeft());
-        }
-        if ( node.isRealRight())  // count all the nodes in the right sub tree
-        {
-            count += countNodes(node.getRight());
-        }
-        return count;
-    }
+    /**
+     * @param median is the new median to be set.
+     */
+    private void setMedian(WireBSTNode median) { this._median = median; }
 
 
     /**
      * insert of the node to the WireBST
      * Complexity: O(lg(n)) (height of the tree) - capitalize the BST attributes by going down the levels after compare the insert
      * value to the node and response respectively to the result: right for node bigger, otherwise left.
+     * use those methods: { updateMedianInsert() , searchWireBST() } = O(lg(n))
      * @param studentNum the student number
      * @param studentName the student name
      */
@@ -79,20 +56,17 @@ public class WireBST{
         WireBSTNode currentNode = this.getHead(); // alias, its a pointer to where i will insert the new node
         boolean insertedFlag = false;
 
-        if( currentNode == null ) // empty tree case
-        {
-            this.setHead(newNode);
-            this.setMedian(newNode);
-            _nodeCounter ++ ;
-            return true;
-        }
-
         if( searchWireBST(newNode.getStudentNum()) != null )  // case that this node is already in the tree (cant override)
         {
             System.out.println( Constants.ERROR_INSERT);
             return false;
         }
 
+        if( currentNode == null ) // empty tree case
+        {
+            this.setHead(newNode);
+            insertedFlag = true;
+        }
 
         while ( ! insertedFlag )
         {
@@ -146,10 +120,14 @@ public class WireBST{
 
     /**
      * update the median after insert a node
+     * Complexity: O(lg(n)) (height of the tree) - a constant number of action + getPredecessor() = O(lg(n))
      * @param newNode the node that inserted
      */
     private void updateMedianInsert(WireBSTNode newNode){
-        if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ) {
+        if (this.getNodeCounter() == 0){
+            this.setMedian(newNode);
+        }
+        else if(newNode.getStudentNum() > this.getMedianWireBST().getStudentNum() ) {
             if (this.getNodeCounter() % 2 == 0) {
                 this.setMedian(getSuccessor(this.getMedianWireBST()));
             }
@@ -164,6 +142,7 @@ public class WireBST{
      * remove the student that his number is the given parameter
      * Complexity: O(lg(n))- for searching the node we wish to remove by call search function. Up next overloading the remove function
      * will not change the function's complexity.
+     * use those functions: { searchWireBST() , updateMedianRemove() } = O(lg(n))
      * @param studentNum , the key for node to remove
      * @return true if the node was removed, else false
      */
@@ -204,6 +183,7 @@ public class WireBST{
 
     /**
      * removing a deep leaf. used by the removeWiredBSTNode function
+     * Complexity: O(1) - constant number of actions.
      * @param node the node we wish to remove
      */
     private void removeDeepLeaf(WireBSTNode node){
@@ -223,11 +203,13 @@ public class WireBST{
 
     /**
      * update the median after remove of a node
+     * Complexity: O(lg(n)) - constant number of actions + getSuccessor()
+     * use those functions: { getSuccessor() , getPredecessor } = O(lg(n))
      * @param node, the node that removed
      */
     private void updateMedianRemove(WireBSTNode node){
 
-        if (this.getNodeCounter() == 1) {
+        if (this.getHead().getLeft() == null && this.getHead().getRight() == null) {
             this.setMedian(null);
         }
         else if (this.getNodeCounter() % 2 == 0) {
@@ -244,6 +226,8 @@ public class WireBST{
 
     /**
      * removing a node with only right son
+     * Complexity: O(lg(n)) - constant number of actions + getSuccessor()
+     * use those functions: { getSuccessor() , getPredecessor } = O(lg(n))
      * @param node the node we wish to remove
      */
     private void removeNodeWithOnlyRightSon(WireBSTNode node){
@@ -268,6 +252,8 @@ public class WireBST{
 
     /**
     * removing a node with only left son
+    * Complexity: O(lg(n)) - constant number of actions + getSuccessor()
+    * use those functions: { getSuccessor() , getPredecessor } = O(lg(n))
     * @param node the node we wish to remove
     */
     private void removeNodeWithOnlyLeftSon(WireBSTNode node){
@@ -291,7 +277,8 @@ public class WireBST{
 
     /**
      * remove node who has two sons
-     * Complexity: O(1). overloading the insert function, a constant number of action, does not change the overall complexity.
+     * Complexity: O(lg(n)) - constant number of actions + getSuccessor()
+     * use those functions: { getSuccessor() , removeWireBSTNode } = O(lg(n))
      * @param node with two sons
      */
     private void removeNodeWithTwoSons(WireBSTNode node){
@@ -301,6 +288,7 @@ public class WireBST{
         dataSaver.copyData(temp);
         removeWireBSTNode(temp); // remove the successor of node. in this call, its promised that temp have at the max 1 child, so he will be remove easily.
                                  // this assuming is good because its cant be the successor if it have 2 sons.
+                                 // complexity: this recursive call can happen only one, because when it call here, temp have only one son.
         node.copyData(dataSaver);
     }
 
@@ -399,7 +387,7 @@ public class WireBST{
      * print the wireBST as pre oder
      * Complexity: O(n) recursively visit all the nodes in the tree. Visit each node only once and preform constant number
      * of actions.
-     * @param node
+     * @param node the sub-tree to pre order from. (can be the root of the tree)
      */
     public void preOrderScan(WireBSTNode node){
 
@@ -444,7 +432,7 @@ public class WireBST{
      * print the wireBST as post order
      * Complexity: O(n) recursively visit all the nodes in the tree. Visit each node only once and preform constant number
      * of actions.
-     * @param node
+     * @param node the sub-tree to post order from. (can be the root of the tree)
      */
     public void postOrderScan(WireBSTNode node){
 
@@ -462,27 +450,16 @@ public class WireBST{
     }
 
 
+
+    //
     /**
-     * Complexity: O(1)
-     * @return the median WireBST
+     * Function to print binary tree in 2D
+     * It does reverse inorder traversal
+     * i translate it from C. credit to: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
+     * @param head : node that is the head of the sub-tree.
+     * @param space : space to print so the tree constraction will be good.
      */
-    public WireBSTNode getMedianWireBST()
-    {
-        return _median;
-
-    }
-
-    /**
-     * @param median is the new median to be set.
-     */
-    private void setMedian(WireBSTNode median) {
-        this._median = median;
-    }
-
-    // Function to print binary tree in 2D
-    // It does reverse inorder traversal
-    // i translate it from C. credit to: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
-    public static void print2DNodeWireBST(WireBSTNode head, int space, WireBST tree)
+    public void print2DNodeWireBST(WireBSTNode head, int space)
     {
         // Base case
         if (head == null) {
@@ -495,18 +472,18 @@ public class WireBST{
 
         // Process right child first
         if (head.isRealRight()){
-            print2DNodeWireBST(head.getRight() , space, tree);
+            print2DNodeWireBST(head.getRight() , space);
         }
 
         // Print current node after space count
         System.out.println();    // go one line down
         for (int i = Constants.COUNT ; i < space; i++)
             System.out.print(" ");
-        WireBSTNode.printData(head ,tree);
+        WireBSTNode.printData(head ,this);
 
         // Process left child
         if (head.isRealLeft()){
-            print2DNodeWireBST(head.getLeft(), space, tree);
+            print2DNodeWireBST(head.getLeft(), space);
         }
     }
 
