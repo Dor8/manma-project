@@ -16,4 +16,26 @@ insert 37
 gui
 remove 30
 gui
+remove 31
+gui
+remove 32
+gui
+remove 35
+gui
+remove 37
+gui
+remove 40
+gui
+remove 43
+gui
+remove 42
+gui
+remove 50
+gui
+remove 55
+gui
+remove 60
+gui
+remove 65
+gui
 search 37
