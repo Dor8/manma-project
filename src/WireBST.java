@@ -12,7 +12,7 @@ public class WireBST{
 
 
     /**
-     * constractor
+     * constructor
      */
     public WireBST()
     {
@@ -39,7 +39,7 @@ public class WireBST{
 
     /**
      * count the number of nodes in the tree.
-     * complexity: its O(n), because its recursivly goes to all the nodes in the tree, and visit each one of them one time.
+     * Complexity: O(n). Because it's recursively goes to all the nodes in the tree, and visit each one of them one time.
      * @param node is the head of the sub tree that start from it.
      * @return the number of nodes in the tree.
      */
@@ -69,6 +69,8 @@ public class WireBST{
 
     /**
      * insert of the node to the WireBST
+     * Complexity: O(lg(n)) (height of the tree) - capitalize the BST attributes by going down the levels after compare the insert
+     * value to the node and response respectively to the result: right for node bigger, otherwise left.
      * @param studentNum the student number
      * @param studentName the student name
      */
@@ -118,6 +120,7 @@ public class WireBST{
 
     /**
      * insert the new node to the left of the current node.
+     * Complexity: O(1). overloading the insert function, a constant number of action, does not change the overall complexity.
      * @param currentNode is the node that will get a new left son.
      * @param newNode is the node to add.
      */
@@ -130,6 +133,7 @@ public class WireBST{
 
     /**
      * insert the new node to the right of the current node.
+     * Complexity: O(1). overloading the insert function, a constant number of action, does not change the overall complexity.
      * @param currentNode is the node that will get a new right son.
      * @param newNode is the node to add.
      */
@@ -158,6 +162,8 @@ public class WireBST{
 
     /**
      * remove the student that his number is the given parameter
+     * Complexity: O(lg(n))- for searching the node we wish to remove by call search function. Up next overloading the remove function
+     * will not change the function's complexity.
      * @param studentNum , the key for node to remove
      * @return true if the node was removed, else false
      */
@@ -177,6 +183,7 @@ public class WireBST{
 
     /**
      * overloading the removeWireBSTNode function, remove node who exist in the tree
+     * Complexity: O(1) - constant number of actions.
      * @param node is the node to remove.
      */
     public void removeWireBSTNode(WireBSTNode node){
@@ -284,6 +291,7 @@ public class WireBST{
 
     /**
      * remove node who has two sons
+     * Complexity: O(1). overloading the insert function, a constant number of action, does not change the overall complexity.
      * @param node with two sons
      */
     private void removeNodeWithTwoSons(WireBSTNode node){
@@ -332,8 +340,9 @@ public class WireBST{
     }
 
     /**
-     *
      * @param studentNum the key to look for in the tree.
+     * Complexity: O(lg(n)) - (height of the tree). Implementation of binary search, going down the tree according to the
+     * result of the comparison.
      * @return pointer to the node if find it in the tree, or null if its not in the tree.
      */
     public WireBSTNode searchWireBST(int studentNum){
@@ -359,13 +368,15 @@ public class WireBST{
 
     /**
      * find the Successor of the node WireBST.
+     * Complexity: O(lg(n)) worst case (successor of the root is the deepest leaf). after getting right child going down the tree
+     * until there is no left son.
      * @param node is the current node, that looking for her's successor.
      * @return the successor of node.
      */
     public WireBSTNode getSuccessor(WireBSTNode node){
         if ( node == null || node.getRight() == null)
             return null;
-        if ( ! node.isRealRight() )     // if the right son isnt real, so he is the successor!
+        if ( ! node.isRealRight() )     // if the right son isn't real, so he is the successor!
             return node.getRight();
         WireBSTNode temp;
         for( temp = node.getRight(); temp.isRealLeft() ; temp = temp.getLeft() )  // temp one step to the right, and then run all the way left, till he reach a non-real son.
@@ -375,13 +386,15 @@ public class WireBST{
 
     /**
      * find the Predecessor of the node WireBST.
+     * Complexity: O(lg(n)) worst case (predecessor of the root is the deepest leaf). after getting left child going down the tree
+     * until there is no right son.
      * @param node is the current node, that looking for her's predecessor.
      * @return the predecessor of node.
      */
     public WireBSTNode getPredecessor(WireBSTNode node){
         if ( node == null || node.getLeft() == null )
             return null;
-        if ( ! node.isRealLeft() )     // if the left son isnt real, so he is the successor!
+        if ( ! node.isRealLeft() )     // if the left son isn't real, so he is the successor!
             return node.getLeft();
         WireBSTNode temp;
         for(temp = node.getLeft(); temp.isRealRight() ; temp = temp.getRight() )  // temp go one step to the left, and then run all the way right, till he reach a non-real son.
@@ -389,10 +402,11 @@ public class WireBST{
         return temp ;
     }
 
-    /*
-    * find the minimum node WireBST
-    * the leftest node in the BST is the min node in it
-    * */
+    /**
+     * find the minimum node WireBST
+     * Complexity: O(lg(n)) worst case (minimum is deepest root)
+     * the leftest node in the BST is the min node in it
+     */
     public WireBSTNode minWireBST(){
         if( this.getHead() == null )
             return null;
@@ -402,10 +416,11 @@ public class WireBST{
         return temp;
     }
 
-    /*
-    * find the maximum node WireBST
-    * the rightest node in the BST is the max node in it
-    * */
+    /**
+     * find the maximum node WireBST
+     * Complexity: O(lg(n)) worst case (maximum is deepest root)
+     * the rightest node in the BST is the max node in it
+     */
     public WireBSTNode maxWireBST(){
         if( this.getHead() == null )
             return null;
@@ -417,6 +432,8 @@ public class WireBST{
 
     /**
      * print the wireBST as pre oder
+     * Complexity: O(n) recursively visit all the nodes in the tree. Visit each node only once and preform constant number
+     * of actions.
      * @param node
      */
     public void preOrderScan(WireBSTNode node){
@@ -437,6 +454,12 @@ public class WireBST{
 
     /**
      * print the wireBST as in order
+     * We could implement this method in recursive way as we did in post and pre order, but we choose to go to the elegant way
+     * without recursive, the motive was to invent the threaded tree initially.
+     * Complexity: O(n). first we found the minimum which is log(n) and then visit each node twice at the worst case (the for loop take
+     * you up and right in the tree, the while loop takes you down and left) - in the worst case you will go over the tree twice.
+     * The time's complexity stay the same for both: the recursive and the none recursive for that function. But space's complexity in
+     * the way we choose is far better (we don't need any spare in that way).
      */
     public void inOrderScan(){
 
@@ -450,11 +473,12 @@ public class WireBST{
             flag = temp.getStudentNum();
             WireBSTNode.printData(temp, this);
         }
-
     }
 
     /**
      * print the wireBST as post order
+     * Complexity: O(n) recursively visit all the nodes in the tree. Visit each node only once and preform constant number
+     * of actions.
      * @param node
      */
     public void postOrderScan(WireBSTNode node){
@@ -474,7 +498,7 @@ public class WireBST{
 
 
     /**
-     *
+     * Complexity: O(1)
      * @return the median WireBST
      */
     public WireBSTNode getMedianWireBST()
@@ -484,7 +508,6 @@ public class WireBST{
     }
 
     /**
-     *
      * @param median is the new median to be set.
      */
     private void setMedian(WireBSTNode median) {
@@ -493,7 +516,7 @@ public class WireBST{
 
     // Function to print binary tree in 2D
     // It does reverse inorder traversal
-    // i translate it from C. cradit to: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
+    // i translate it from C. credit to: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
     public static void print2DNodeWireBST(WireBSTNode head, int space, WireBST tree)
     {
         // Base case
